@@ -1,0 +1,19 @@
+{
+  "name": "lets-innovate",
+  "version": "1.0.0",
+  "description": "An application designed to submit a new feature request",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zarad1993/lets-innovate.git"
+  },
+  "author": "Mohammad Albakri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zarad1993/lets-innovate/issues"
+  },
+  "homepage": "https://github.com/Zarad1993/lets-innovate#readme"
+}
