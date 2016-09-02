@@ -5,8 +5,8 @@ var Schema = mongoose.Schema;
 var featureSchema = new Schema({
 	title : {type : String},
 	description : {type : String},
-	Client : {type : String},
-	clientPriority : {type : Array},
+	client : {type : String},
+	clientPriority : {type : Number},
 	ticketUrl : {type : String},
 	targetDate : { type : Number},
     area: {
