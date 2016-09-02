@@ -4,6 +4,18 @@ var jwt = require('jwt-simple');
 var helpers = require('./../config/helpers.js');
 
 module.exports = {
+
+	getClients : function(req, res){
+		Client.find({})
+			  .exec(function(err, allClients){
+			  	if(!allClients){
+			  		helpers.errorHandler('Error Getting Clients', req, res);
+			  	} else {
+			  		res.status(200).send(allClients);
+			  	}
+			  })
+	},
+
 	signin : function(req,res){
 		var clientEmail = req.body.email;
 		var password = req.body.password;
@@ -29,10 +41,12 @@ module.exports = {
 	}, 
 
 	signup : function(req,res){
+		var clientName = req.body.name;
 		var clientEmail = req.body.email;
 		var password = req.body.password;
 		
 		var newClient = new Client({
+			name : clientName,
 			email : clientEmail,
 			password : password
 		});
