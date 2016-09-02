@@ -14,6 +14,10 @@ git clone https://github.com/Zarad1993/lets-innovate.git
 ```sh
 npm install
 ```
+## Before running on localhost 
+```sh
+sudo mongod
+```
 
 ## Styling guide
 ```sh
