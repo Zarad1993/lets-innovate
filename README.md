@@ -11,6 +11,10 @@ An application designed to submit a new feature request
 git clone https://github.com/Zarad1993/lets-innovate.git
 ```
 
+```sh
+npm install
+```
+
 ## Styling guide
 ```sh
 gulp
