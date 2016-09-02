@@ -36,4 +36,14 @@ clientSchema.pre('save', function(next){
 
 var Client = mongoose.model('Client', clientSchema);
 
+Client.comparePassword = function(candidatePassword, savedPassword, res, cb){
+  bcrypt.compare( candidatePassword, savedPassword, function(err, isMatch){
+    if(err){
+      res.status(500).send('Wrong Password');
+    } else if(cb){
+      cb(isMatch);
+    }
+  });
+};
+
 module.exports = Client;
