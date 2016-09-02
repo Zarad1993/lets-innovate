@@ -61,24 +61,46 @@ describe('Client Unit Tests', function(done){
 
 });
 
-// describe('Client Integration Tests', function(done){
-// 	var newClient;
-// 	beforeEach(function(done){
-// 		var newClient = new Client({
-// 			'email' : 'myslack@gmail.com',  
-// 			'password' : 'test'
-// 		});
-// 		done();
-// 	});
+describe('Client Integration Tests', function(done){
+	var newClient;
+	beforeEach(function(done){
+		var newClient = new Client({
+			'email' : 'myslack@gmail.com',  
+			'password' : 'test'
+		});
+		done();
+	});
 
 
-// 	afterEach(function(done){
-// 		Client.collection.drop();
-// 		done();
-// 	})
+	afterEach(function(done){
+		Client.collection.drop();
+		done();
+	})
 
-// 	it('sample test', function(done){
-// 		expect(true).to.be.equal(true);
-// 		done();
-// 	})
-// })
+	it('should sign up when passing the required keys', function(done){
+		chai.request(server)
+			.post('/api/innov/signup')
+			.send({
+				'email' : 'secondSlack@gmail.com' , 
+				'password' : 'secondTest'
+			})
+			.end(function(err, res){
+				expect(res.status).to.be.equal(201);
+				expect(res.req.res.text).to.be.equal('New User is Created');
+				done();
+			})
+	});
+
+	it('should handle error when passing wrong keys when signing up', function(done){
+		chai.request(server)
+			.post('/api/innov/signup')
+			.send({
+				'emails' : 'eventhough@gmail.com' ,
+				'password' : 'willFail'
+			})
+			.end(function(err,res){
+				expect(res.status).to.be.equal(500);
+				done();
+			})
+	})
+})

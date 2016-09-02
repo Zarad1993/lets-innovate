@@ -26,19 +26,23 @@ module.exports = {
 	signup : function(req,res){
 		var clientEmail = req.body.email;
 		var password = req.body.password;
-
+		
 		var newClient = new Client({
 			email : clientEmail,
 			password : password
 		});
 
-		newClient.save(function(err,saved){
-			if(saved){
-				res.status(200).send('New User is Created');
-			} else {
-				helpers.errorHandler('Email was not set properly', req, res);
-			}
-		})
+		if(password && clientEmail){
+			newClient.save(function(err,saved){
+				if(saved){
+					res.status(201).send('New User is Created');
+				} else {
+					helpers.errorHandler('Email was not set properly', req, res);
+				}
+			})
+		} else {
+			helpers.errorHandler('Email was not set properly', req, res);
+		}
 
 	}
 }
