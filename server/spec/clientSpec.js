@@ -64,10 +64,11 @@ describe('Client Unit Tests', function(done){
 describe('Client Integration Tests', function(done){
 	var newClient;
 	beforeEach(function(done){
-		var newClient = new Client({
+		newClient = new Client({
 			'email' : 'myslack@gmail.com',  
 			'password' : 'test'
 		});
+		newClient.save();
 		done();
 	});
 
@@ -102,5 +103,41 @@ describe('Client Integration Tests', function(done){
 				expect(res.status).to.be.equal(500);
 				done();
 			})
-	})
-})
+	});
+
+	it('should sign in by getting a token', function(done){
+		var newClient = new Client({
+			email : 'mohammad@gmail.com', 
+			password : 'innovate'
+		})
+		newClient.save(function(err, saved){
+			if(saved){
+				chai.request(server)
+					.post('/api/innov/signin')
+					.send({
+						email : 'mohammad@gmail.com' , 
+						password : 'innovate'
+					})
+					.end(function(err, res){
+						expect(res.body).to.have.property('token')
+						expect(res.status).to.be.equal(200);
+						done();
+					});				
+			}
+		});
+
+	});
+
+	it('should handle error when passing wrong email or password', function(done){
+		chai.request(server)
+			.post('/api/innov/signin')
+			.send({
+				'email' : 'thisWontWork@gmail.com',
+				'password' : 'howAboutNow'
+			})
+			.end(function(err, res){
+				expect(res.status).to.be.equal(500);
+				done();
+			})
+	});
+});
