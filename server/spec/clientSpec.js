@@ -47,5 +47,6 @@ describe('Client Unit Tests', function(done){
 describe('Client Integration Tests', function(done){
 	it('sample test', function(done){
 		expect(true).to.be.equal(true);
+		done();
 	})
 })
