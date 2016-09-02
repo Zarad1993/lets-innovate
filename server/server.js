@@ -15,7 +15,8 @@ var listener = app.listen(port , function(){
 	console.log('Listening on port ' + listener.address().port); // Listening port
 });
 
-require('./config/middleware.js');
+require('./config/middleware.js')(app,express);
+require('./config/routes.js')(app,express);
 // TODO
 // Get the routes Done
 
