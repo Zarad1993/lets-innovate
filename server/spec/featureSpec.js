@@ -16,6 +16,11 @@ var featureController = require('./../Features/featureController.js');
 
 describe('Feature unit tests', function(done){
 
+	afterEach(function(done){
+		Feature.collection.drop();
+		done();
+	})
+
 	it('should have a feature Model with the right fields', function(done){
 		var newFeature = new Feature({
 			title : 'this is a test feature',

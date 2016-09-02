@@ -1,3 +1,4 @@
+var sendEmail = require('./../emailNotifications.js');
 var Client = require('./../Client/clientModel.js'),
 	Feature = require('./featureModel.js'),
 	helpers = require('./../config/helpers.js');
@@ -43,18 +44,23 @@ module.exports = {
 			   		for(var i = 0; i < features.length; i++){
 			   			if(features[i].clientPriority == featurePriority){
 			   				helpers.errorHandler('This number is Prioritized', req, res);
-			   				console.log('test');
 			   				flag = false;
 			   			} 
 			   		}
 			   		if(flag){
 			   			newFeature.save(function(err,saved){
 			   				if(saved){
+			   					// TODO SEND TO THE CLIENT AN EMAIL OF THE NEW FEATURE REQUEST
+			   					Client.findOne({name : saved.client})
+			   						  .exec(function(err, client){
+			   						  	console.log(client.email);
+			   						  })
 			   					res.status(201).send('Feature Successfully Submitted');
 			   				}
 			   			})
 			   		}
 			   })
+
 
 	}
 };
