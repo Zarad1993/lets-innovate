@@ -16,6 +16,7 @@ var listener = app.listen(port , function(){
 });
 
 require('./config/middleware.js');
+// TODO
 // Get the routes Done
 
 module.exports = app;
