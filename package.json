@@ -4,7 +4,7 @@
   "description": "An application designed to submit a new feature request",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/_mocha ./server/spec/**/*.js"
   },
 
   "engines": {
@@ -38,7 +38,9 @@
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
     "mongoose": "^4.1.0",
-    "morgan": "^1.1.1"
+    "morgan": "^1.1.1",
+    "path": "^0.12.7"
+
   },
 
   "homepage": "https://github.com/Zarad1993/lets-innovate#readme"
