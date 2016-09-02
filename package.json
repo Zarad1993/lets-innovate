@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
+  "engines": {
+  "node": "6.3.1"
+  },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Zarad1993/lets-innovate.git"
@@ -15,5 +20,22 @@
   "bugs": {
     "url": "https://github.com/Zarad1993/lets-innovate/issues"
   },
+  "devDependencies":{
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "istanbul": "^0.4.4",
+    "mocha": "^3.0.0"
+  },
+
+  "dependencies":{
+    "bower": "latest",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5",
+    "jwt-simple": "^0.2.0",
+    "mongoose": "^4.1.0",
+    "morgan": "^1.1.1"
+  },
+
   "homepage": "https://github.com/Zarad1993/lets-innovate#readme"
 }
