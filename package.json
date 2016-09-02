@@ -38,6 +38,8 @@
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
     "mongoose": "^4.1.0",
+    "nodemailer": "^2.5.0",
+    "nodemailer-smtp-transport": "^2.6.0",
     "morgan": "^1.1.1",
     "path": "^0.12.7"
 
