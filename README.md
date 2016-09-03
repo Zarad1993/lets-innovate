@@ -15,7 +15,7 @@ git clone https://github.com/Zarad1993/lets-innovate.git
 
 ### Installing Dependencies
 ```sh
-npm install
+npm install && bower install
 ```
 ## Before running on localhost 
 ```sh
