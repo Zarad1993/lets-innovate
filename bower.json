@@ -1,8 +1,10 @@
 {
   "name": "lets-innovate",
   "version": "1.0.0",
-  "authors": 
-    "Mohammad Al-Bakri <mohammad.albakri93@gmail.com>",
+  "authors": [
+    "Mohammad Al-Bakri <mohammad.albakri93@gmail.com>"
+  ],
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -10,15 +12,12 @@
     "client/lib"
   ],
   "dependencies": {
-    "angular-route": "~1.5.8",
-    "angular-mocks": "~1.5.8",
-    "angular": "1.5.8"
-  },
-  "devDependencies": {
-    "angular": "^1.5.8",
-    "angular-mocks": "^1.5.8"
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-mocks": "latest",
   },
   "resolutions": {
-    "angular": "1.5.8"
+    "angular": "1.5.7"
   }
+
 }
