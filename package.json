@@ -4,7 +4,8 @@
   "description": "An application designed to submit a new feature request",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/_mocha ./server/spec/**/*.js"
+    "test": "node_modules/.bin/_mocha ./server/spec/**/*.js",
+    "postinstall": "bower install"
   },
 
   "engines": {
