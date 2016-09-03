@@ -2,7 +2,6 @@
   "name": "lets-innovate",
   "version": "1.0.0",
   "description": "An application designed to submit a new feature request",
-  "main": "index.js",
   "scripts": {
     "test": "node_modules/.bin/_mocha ./server/spec/**/*.js",
     "postinstall": "npm install -g bower; bower install"
@@ -17,7 +16,7 @@
     "url": "git+https://github.com/Zarad1993/lets-innovate.git"
   },
   "author": "Mohammad Albakri",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Zarad1993/lets-innovate/issues"
   },
