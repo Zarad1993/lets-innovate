@@ -4,8 +4,7 @@ var transporter = nodemailer.createTransport(smtpTransport ({
 	service: 'hotmail',
 	auth: {
 		user: 'lets-innovate@outlook.com',
-		// TODO Add an environment that holds a password on deployment
-		pass: ''
+		pass: process.env.password
 	}
 }));
 
