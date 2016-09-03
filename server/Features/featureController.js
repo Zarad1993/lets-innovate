@@ -7,6 +7,7 @@ var Client = require('./../Client/clientModel.js'),
 module.exports = {
 	getAllFeatures : function(req, res){
 		Feature.find({})
+			   .sort({'clientPriority' : '1'})
 			   .exec(function(err, features){
 			   	if(!features){
 			   		helpers.errorHandler('Error Getting Features', req, res);
