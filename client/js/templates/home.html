@@ -1,5 +1,5 @@
 <div style="padding:50px">
-<form>
+<form ng-init="startUp()">
   <div class="form-group">
     <label for="exampleInputEmail1">Title</label>
     <input type="title" class="form-control" id="exampleInputEmail1" aria-describedby="title help" placeholder="Enter title" ng-model="feature.title">
@@ -38,5 +38,6 @@
     </select>
   </div>
   <button type="submit" class="btn btn-primary" ng-click="sendRequest()">Submit</button>
+  <button class="btn btn-primary" ng-click="logout()">Logout</button>
 </form>
 </div>
