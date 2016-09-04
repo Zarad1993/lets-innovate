@@ -10,16 +10,13 @@ angular.module('innovate.home',[])
 		  .catch(function(error){
 		  	console.log(error);
 		  })
-	$scope.test = function(){
-		console.log($scope.feature);
-
-		// Features.addFeature($scope.feature)
-		// 		.then(function(response){
-		// 			alert(response.data);
-		// 		})
-		// 		.catch(function(error){
-		// 			console.log(error);
-		// 		});
-		alert('A message has been sent to the client');
+	$scope.sendRequest = function(){
+		Features.addFeature($scope.feature)
+				.then(function(response){
+					alert('A message has been sent to the client');
+				})
+				.catch(function(error){
+					console.log(error);
+				});
 	}
 })
