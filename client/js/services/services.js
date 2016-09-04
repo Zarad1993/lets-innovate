@@ -1,6 +1,6 @@
 angular.module('innovate.services',[])
 
-.factory('Client', function($window, $http){
+.factory('Client', function($window, $http, $location){
 	var signin = function(data){
 		return $http({
 			method : 'POST',
@@ -37,7 +37,7 @@ angular.module('innovate.services',[])
 	var signout = function () {
 	    localStorage.clear();
 	    $window.localStorage.clear();
-	    $location.path('/');
+	    $location.path('/signin');
 	};
 
 
