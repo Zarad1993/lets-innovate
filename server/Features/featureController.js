@@ -27,7 +27,6 @@ module.exports = {
 			featurePriority = req.body.clientPriority,
 			flag = true;
 
-			// Still to fill the client Priority
 
 		var newFeature = new Feature({
 			title : featureTitle,
@@ -56,7 +55,7 @@ module.exports = {
 								if(flag){
 						   			newFeature.save(function(err,saved){
 						   				if(saved){
-						   					// TODO SEND TO THE CLIENT AN EMAIL OF THE NEW FEATURE REQUEST
+						   					// TODO SEND TO THE ADMIN AN EMAIL OF THE NEW FEATURE REQUEST
 						   					Client.findOne({name : saved.client})
 						   						  .exec(function(err, client){
 						   						  	console.log(client.email);
