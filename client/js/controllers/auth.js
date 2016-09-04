@@ -1,6 +1,11 @@
 angular.module('innovate.auth',[])
 .controller('AuthController', function($scope, $location, $window, Client){
-
+	$scope.checkUser = function(){
+		if(Client.isAuth()){
+			alert('You Are Already Logged In');
+			$location.path('/');
+		}
+	}
 	$scope.signWithAuth = function(provider){
 		OAuth.popup(provider)
 		.then(function(result) {
