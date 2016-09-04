@@ -3,15 +3,16 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var featureSchema = new Schema({
-	title : {type : String},
-	description : {type : String},
-	client : {type : String},
-	clientPriority : {type : Number},
-	ticketUrl : {type : String},
-	targetDate : { type : Date},
+	title : {type : String, required: true},
+	description : {type : String, required: true},
+	client : {type : String, required: true},
+	clientPriority : {type : Number, required: true},
+	ticketUrl : {type : String, required: true},
+	targetDate : { type : Date, required: true},
     area: {
 	    type: String,
-	    enum: ['Policies', 'Billing', 'Claims', 'Reports']
+	    enum: ['Policies', 'Billing', 'Claims', 'Reports'],
+	    required: true
   	}
 });
 
