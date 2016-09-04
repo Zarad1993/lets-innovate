@@ -48,18 +48,25 @@ module.exports = {
 			   				flag = false;
 			   			} 
 			   		}
-			   		if(flag){
-			   			newFeature.save(function(err,saved){
-			   				if(saved){
-			   					// TODO SEND TO THE CLIENT AN EMAIL OF THE NEW FEATURE REQUEST
-			   					Client.findOne({name : saved.client})
-			   						  .exec(function(err, client){
-			   						  	console.log(client.email);
-			   						  })
-			   					res.status(201).send('Feature Successfully Submitted');
-			   				}
-			   			})
-			   		}
+			   		Client.findOne({name : featureClient})
+			   			  .exec(function(err, client){
+			   			  	if(!client){
+			   			  		helpers.errorHandler('This is not a subscribed client', req, res);
+			   			  	} else {
+								if(flag){
+						   			newFeature.save(function(err,saved){
+						   				if(saved){
+						   					// TODO SEND TO THE CLIENT AN EMAIL OF THE NEW FEATURE REQUEST
+						   					Client.findOne({name : saved.client})
+						   						  .exec(function(err, client){
+						   						  	console.log(client.email);
+						   						  })
+						   					res.status(201).send('Feature Successfully Submitted');
+						   				}
+						   			})
+								}			   			  		
+			   			  	}
+			   			  })
 			   })
 
 
