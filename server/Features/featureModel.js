@@ -8,7 +8,7 @@ var featureSchema = new Schema({
 	client : {type : String},
 	clientPriority : {type : Number},
 	ticketUrl : {type : String},
-	targetDate : { type : Number},
+	targetDate : { type : Date},
     area: {
 	    type: String,
 	    enum: ['Policies', 'Billing', 'Claims', 'Reports']
