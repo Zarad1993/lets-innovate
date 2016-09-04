@@ -15,6 +15,11 @@ angular.module('lets-innovate',[
 			controller : 'AuthController'
 		})
 })
-.run(function(){
-	OAuth.initialize('L47TybIQ1vyV7pZ-2OpJ5NNb3Qo')
+.run(function($rootScope, $location, Client){
+	OAuth.initialize('L47TybIQ1vyV7pZ-2OpJ5NNb3Qo');
+	$rootScope.$on('$routeChangeStart', function (evt, next, current) {
+		if(!Client.isAuth() && next.$$route){
+			$location.path('/signin');
+		}
+	});	
 })
