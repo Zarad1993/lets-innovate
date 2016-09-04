@@ -2,17 +2,17 @@
 <form ng-init="startUp()">
   <div class="form-group">
     <label for="exampleInputEmail1">Title</label>
-    <input type="title" class="form-control" id="exampleInputEmail1" aria-describedby="title help" placeholder="Enter title" ng-model="feature.title">
+    <input type="title" class="form-control" id="exampleInputEmail1" aria-describedby="title help" placeholder="Enter title" ng-model="feature.title" required>
     <small id="emailHelp" class="form-text text-muted">Try to be short and comprehensive</small>
   </div>
   <div class="form-group">
     <label for="exampleTextarea">Description</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="feature.description"></textarea>
+    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="feature.description" required></textarea>
   </div>
   <div class="form-group">
-    <label for="exampleSelect1">Select Client</label>
+    <label for="exampleSelect1">Client</label>
     <select class="form-control" id="exampleSelect4" ng-model="feature.client">
-      <option ng-repeat="client in clients">{{client.name}}</option>
+      <option>{{client.name}}</option>
     </select>
   </div>
 	<div class="form-group">
@@ -25,7 +25,7 @@
 	</div>
   <div class="form-group">
     <label for="exampleInputEmail1">Ticket URL</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Url" ng-model="feature.ticketUrl">
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Url" ng-model="feature.ticketUrl">
     <small id="emailHelp" class="form-text text-muted">Storing any URL</small>
   </div>
   <div class="form-group">
