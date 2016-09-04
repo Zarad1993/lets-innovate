@@ -5,7 +5,7 @@ An application designed to submit a new feature request
 
 ## Production
 
-Check our website [here](http://zarad.herokuapp.com/#/).
+Check our website [here](http://lets-innovate.herokuapp.com/#/).
 
 
 ## Table of Contents
