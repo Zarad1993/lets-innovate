@@ -1,1 +1,29 @@
-<h1>This is a test page for user Details</h1>
+<div class="container" ng-init="runUp()">
+  <h3><b><i>{{features[0].client}}'s Page<i><b></h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Priority</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Target Date</th>
+        <th>URL</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="feature in features">
+          <td>{{feature.clientPriority}}</td>
+          <td>{{feature.title}}</td>
+          <td style="width:50%">{{feature.description}}</td>
+          <td>{{feature.targetDate}}</td>
+          <td>{{feature.ticketUrl}}</td>
+          <td>
+          <a ng-click="delete(feature.clientPriority, feature.client)" class="btn btn-danger btn">
+            <span class="glyphicon glyphicon-minus"></span>
+          </a>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
