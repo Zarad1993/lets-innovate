@@ -19,6 +19,10 @@ angular.module('innovate.admin',[])
 	}
 
 	$scope.test = function(data){
-		console.log('testing');
+		$location.path('/admin/home/'+data);
+	}
+
+	$scope.logout = function(){
+		Client.signout();
 	}
 });
