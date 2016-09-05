@@ -86,10 +86,25 @@ angular.module('innovate.services',[])
 		});
 	};
 
+	var deleteFeature = function(data){
+		return $http({
+			method : 'POST', 
+			url : '/api/innov/delete',
+			data : data
+		})
+		.then(function(response){
+			return response;
+		})
+		.catch(function(error){
+			return error;
+		})
+	}
+
 	return {
 		getFeatures : getFeatures,
 		addFeature : addFeature,
-		getByEmail : getByEmail
+		getByEmail : getByEmail,
+		deleteFeature : deleteFeature
 	}
 })
 .factory('Admin', function($window,$http){
