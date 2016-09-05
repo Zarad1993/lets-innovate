@@ -59,6 +59,19 @@ angular.module('innovate.services',[])
 		})
 	};
 
+	var getByEmail = function(email){
+		return $http({
+			method : 'GET' ,
+			url : '/api/innov/get/'+email
+		})
+		.then(function(response){
+			return response;
+		})
+		.catch(function(error){
+			return error;
+		});
+	}
+
 	var addFeature = function(data){
 		return $http({
 			method : 'POST' ,
@@ -75,7 +88,8 @@ angular.module('innovate.services',[])
 
 	return {
 		getFeatures : getFeatures,
-		addFeature : addFeature
+		addFeature : addFeature,
+		getByEmail : getByEmail
 	}
 })
 .factory('Admin', function($window,$http){
