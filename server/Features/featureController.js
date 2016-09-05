@@ -5,6 +5,31 @@ var Client = require('./../Client/clientModel.js'),
 
 
 module.exports = {
+	
+	getByEmail : function(req, res){
+		var email  = req.params.email;
+		Client.findOne({email : email})
+			  .exec(function(err, user){
+			  	if(user){
+					Feature.find({})
+							.sort({'clientPriority' : '1'})
+							.exec(function(err, features){
+								if(!features){
+									helpers.errorHandler('Error Providing Features', req, res)
+								} else {
+									var filteredFeatures = [];
+									for(var i =0 ; i < features.length; i++){
+										if(features[i].client == user.name){
+											filteredFeatures.push(features[i]);
+										}
+									}
+									res.status(200).send(filteredFeatures);
+								}
+							})
+			  	}
+			  })
+	},
+
 	getAllFeatures : function(req, res){
 		Feature.find({})
 			   .sort({'clientPriority' : '1'})
@@ -18,6 +43,7 @@ module.exports = {
 	},
 
 	addNewFeature : function(req, res){
+
 		var featureTitle = req.body.title,
 			featureDesc = req.body.description,
 			featureClient = req.body.client,
@@ -26,7 +52,6 @@ module.exports = {
 			featureArea = req.body.area
 			featurePriority = req.body.clientPriority,
 			flag = true;
-
 
 		var newFeature = new Feature({
 			title : featureTitle,
@@ -37,7 +62,6 @@ module.exports = {
 			targetDate : featureDate,
 			area : featureArea
 		});
-
 
 		Feature.find({client : featureClient})
 			   .exec(function(err, features){
@@ -59,16 +83,14 @@ module.exports = {
 						   					Client.findOne({name : saved.client})
 						   						  .exec(function(err, client){
 						   						  	console.log(client.email);
-						   						  })
+						   						  });
 						   					res.status(201).send('Feature Successfully Submitted');
 						   				}
-						   			})
+						   			});
 								}			   			  		
 			   			  	}
-			   			  })
-			   })
-
-
+			   			  });
+			   });
 	}
 };
 
