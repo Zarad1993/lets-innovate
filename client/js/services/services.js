@@ -95,4 +95,4 @@ angular.module('innovate.services',[])
 	return {
 		signin : signin
 	}
-})
+});

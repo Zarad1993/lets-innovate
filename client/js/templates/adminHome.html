@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>Welcome</h2>
+  <p>Below are the clients subscribed, click on one for more details</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="client in clients">
+          <td>{{client.name}}</td>
+          <td>{{client.email}}</td>
+          <td><button class="btn btn-primary" ng-click="test()">Show Details</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
