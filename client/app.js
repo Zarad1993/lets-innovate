@@ -22,6 +22,11 @@ angular.module('lets-innovate',[
 			templateUrl : 'js/templates/adminLogin.html',
 			controller: 'AdminController'
 		})
+		.when('/admin/home',{
+			cache : false,
+			templateUrl : 'js/templates/adminHome.html',
+			controller : 'AdminController'
+		})
 	    .otherwise({
     	  redirectTo: '/'
     	});
