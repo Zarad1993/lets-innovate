@@ -3,6 +3,7 @@ angular.module('lets-innovate',[
 	'innovate.services',
 	'innovate.auth',
 	'innovate.admin',
+	'innovate.user',
 	'ngRoute'
 	])
 .config(function($routeProvider, $httpProvider){
@@ -26,6 +27,11 @@ angular.module('lets-innovate',[
 			cache : false,
 			templateUrl : 'js/templates/adminHome.html',
 			controller : 'AdminController'
+		})
+		.when('/admin/home/:email',{
+			cache : false, 
+			templateUrl : 'js/templates/userDetails.html',
+			controller : 'UserViewController'
 		})
 	    .otherwise({
     	  redirectTo: '/'
