@@ -12,8 +12,9 @@
       <tr ng-repeat="client in clients">
           <td>{{client.name}}</td>
           <td>{{client.email}}</td>
-          <td><button class="btn btn-primary" ng-click="test()">Show Details</button></td>
+          <td><button class="btn btn-primary" ng-click="test(client.email)">Show Details</button></td>
       </tr>
     </tbody>
   </table>
+  <button class="btn btn-primary" ng-click="logout()">Logout</button>
 </div>
