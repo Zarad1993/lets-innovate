@@ -5,7 +5,7 @@ var Client = require('./../Client/clientModel.js'),
 
 
 module.exports = {
-	
+
 	getByEmail : function(req, res){
 		var email  = req.params.email;
 		Client.findOne({email : email})
@@ -28,6 +28,20 @@ module.exports = {
 							})
 			  	}
 			  })
+	},
+
+	deleteFeature : function(req, res){
+		var priority = req.body.priority;
+		var client = req.body.client;
+		Feature.find({ client : client , clientPriority : priority})
+			   .remove()
+			   .exec(function(err, data){
+			   		if(data.result.n){
+			   			res.status(201).send('Feature Successfully Deleted');
+			   		} else {
+			   			res.status(500).send('Error Deleting Requested Feature');
+			   		}
+			   })
 	},
 
 	getAllFeatures : function(req, res){

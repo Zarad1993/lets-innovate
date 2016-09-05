@@ -12,6 +12,7 @@ module.exports = function(app){
 	app.get('/api/innov/get/:email', featureController.getByEmail)
 	app.post('/api/innov/add', featureController.addNewFeature);
 	app.get('/api/innov/features', featureController.getAllFeatures);
+	app.post('/api/innov/delete', featureController.deleteFeature);
 
 
 	app.get('/api/innov/clients', clientController.getClients);
