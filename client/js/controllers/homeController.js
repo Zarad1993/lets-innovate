@@ -21,8 +21,8 @@ angular.module('innovate.home',[])
 	$scope.sendRequest = function(){
 		Features.addFeature($scope.feature)
 				.then(function(response){
-					$window.location.reload();
 					notifyMe();
+					setTimeout(function(){$window.location.reload();},3000);
 				})
 				.catch(function(error){
 					console.log(error);
