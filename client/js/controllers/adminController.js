@@ -15,7 +15,6 @@ angular.module('innovate.admin',[])
 		Client.getClients()
 			  .then(function(response){
 			  	$scope.clients = response.data
-			  	console.log(response);
 			  })
 	}
 
