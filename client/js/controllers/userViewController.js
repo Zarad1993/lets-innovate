@@ -6,19 +6,36 @@ angular.module('innovate.user',[])
 	$scope.runUp = function(){
 		Features.getByEmail(email)
 			  .then(function(response){
-			  	$scope.features = response.data;
-			  	for(var i = 0; i < $scope.features.length; i++){
-			  		$scope.features[i].targetDate = $scope.features[i].targetDate.substr(0,$scope.features[i].targetDate.indexOf('T'));
+			  	if(response.data.length > 0){
+				  	$scope.features = response.data;
+				  	for(var i = 0; i < $scope.features.length; i++){
+				  		$scope.features[i].targetDate = $scope.features[i].targetDate.substr(0,$scope.features[i].targetDate.indexOf('T'));
+				  	}
+			  	} else {
+			  		if($window.localStorage.getItem('com.admin')){
+			  			$location.path('/admin/home');
+			  		} else {
+			  			$location.path('/');
+			  		}
+			  		alert('This client has no more feature Requests');
 			  	}
+
 			  })		
 	}
 
 	$scope.delete = function(priority,client){
 		Features.deleteFeature({priority : priority , client : client})
 				.then(function(response){
-					console.log(response);
 					$window.location.reload();
 				})
+	};
+
+	$scope.goBack = function(){
+		if($window.localStorage.getItem('com.admin')){
+			$location.path('/admin/home');
+		} else {
+			$location.path('/');
+		}
 	}
 
 });
