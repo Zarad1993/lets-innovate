@@ -5,7 +5,8 @@ angular.module('innovate.admin',[])
 	$scope.login = function(){
 		Admin.signin($scope.user)
 			 .then(function(response){
-			 	$window.localStorage.setItem('com.innov', response.data.token)
+			 	$window.localStorage.setItem('com.innov', response.data.token);
+			 	$window.localStorage.setItem('com.admin', true);
 			 	$location.path('/admin/home');
 			 })
 	};
