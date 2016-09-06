@@ -10,6 +10,7 @@
         <th>URL</th>
         <th>Area</th>
         <th>Delete</th>
+        <th ng-show="flag">Edit</th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,11 @@
           <a ng-click="delete(feature.clientPriority, feature.client)" class="btn btn-danger btn">
             <span class="glyphicon glyphicon-minus"></span>
           </a>
+          </td>
+          <td ng-show="flag">
+            <a ng-click="test()" class="btn btn-success btn">
+              <span class="glyphicon glyphicon-pencil"></span>
+            </a>
           </td>
       </tr>
     </tbody>

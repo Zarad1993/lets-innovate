@@ -2,7 +2,7 @@ angular.module('innovate.user',[])
 .controller('UserViewController',function($scope, $window, Features, $location){
 	var email = $location.path().substr(12,$location.path().length);
 	$scope.features = [];
-
+	$scope.flag = true;
 	$scope.runUp = function(){
 		Features.getByEmail(email)
 			  .then(function(response){
@@ -20,7 +20,10 @@ angular.module('innovate.user',[])
 			  		alert('This client has no more feature Requests');
 			  	}
 
-			  })		
+			  });
+		if($window.localStorage.getItem('com.admin')){
+			$scope.flag = false;
+		}
 	}
 
 	$scope.delete = function(priority,client){
@@ -36,6 +39,11 @@ angular.module('innovate.user',[])
 		} else {
 			$location.path('/');
 		}
+	};
+
+
+	$scope.test = function(){
+		console.log('Testing');
 	}
 
 });
