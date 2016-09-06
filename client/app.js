@@ -37,11 +37,20 @@ angular.module('lets-innovate',[
     	  redirectTo: '/'
     	});
 })
-.run(function($rootScope, $location, Client){
+.run(function($rootScope, $location, Client, $window){
 	OAuth.initialize('L47TybIQ1vyV7pZ-2OpJ5NNb3Qo');
 	$rootScope.$on('$routeChangeStart', function (evt, next, current) {
 		if(!Client.isAuth() && next.$$route.originalPath !== '/admin'){
 			$location.path('/signin');
-		}
+		} else if($window.localStorage.getItem('com.email') && $window.localStorage.getItem('com.admin')){
+			alert('Both Are in');
+			Client.signout();
+		} else if($window.localStorage.getItem('com.client') && next.$$route.originalPath === '/admin/home'){
+			alert('There is no such access');
+			$location.path('/');
+		} else if($window.localStorage.getItem('com.admin') && next.$$route.originalPath === '/'){
+			alert('Sorry Admin, You cannot be here');
+			$location.path('/admin/home');
+		} 
 	});	
 })
