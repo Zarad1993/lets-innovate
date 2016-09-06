@@ -26,9 +26,10 @@ angular.module('innovate.auth',[])
 			  	console.log(response);
 				setTimeout(function(){
 					$window.localStorage.setItem('com.email',data.email);
+					$window.localStorage.setItem('com.client',true);
 					$location.path('/');
 					$scope.$apply();
-				},2000);
+				},250);
 			  })
 			  .catch(function(error){
 			  	console.log(error);
