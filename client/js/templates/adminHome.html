@@ -1,6 +1,9 @@
 <div class="container">
   <h2>Welcome</h2>
   <p>Below are the clients subscribed, click on one for more details</p>
+     <form>
+      <input style="width:20%" class="form-control" ng-model="search" type="text" name="text" placeholder="Search">
+    </form>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -10,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="client in clients">
+      <tr ng-repeat="client in clients | filter:search">
           <td>{{client.name}}</td>
           <td>{{client.email}}</td>
           <td><button class="btn btn-primary" ng-click="test(client.email)">Show Details</button></td>

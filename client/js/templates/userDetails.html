@@ -1,5 +1,8 @@
 <div class="container" ng-init="runUp()">
   <h3><b><i>{{features[0].client}}'s Page<i><b></h3>
+  <form>
+    <input style="width:20%" class="form-control" ng-model="search" type="text" name="text" placeholder="Search">
+  </form>
   <table class="table table-hover">
     <thead>
       <tr>
@@ -14,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="feature in features">
+      <tr ng-repeat="feature in features | filter:search">
           <td>{{feature.clientPriority}}</td>
           <td>{{feature.title}}</td>
           <td style="width:50%">{{feature.description}}</td>
