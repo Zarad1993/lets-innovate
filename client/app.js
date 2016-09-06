@@ -61,7 +61,7 @@ angular.module('lets-innovate',[
 			});
 		}
 	}
-
+	notifyMe();
 	$rootScope.$on('$routeChangeStart', function (evt, next, current) {
 		if(!Client.isAuth() && next.$$route.originalPath !== '/admin'){
 			$location.path('/signin');
