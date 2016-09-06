@@ -11,12 +11,14 @@
   "engines": {
   "node": "6.3.1"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Zarad1993/lets-innovate.git"
   },
-  "author": "Mohammad Albakri",
+  "author": {
+    "name": "Mohammad Albakri",
+    "email": "mohammad.albakri93@gmail.com"
+  },
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Zarad1993/lets-innovate/issues"
@@ -46,5 +48,5 @@
 
   },
 
-  "homepage": "https://github.com/Zarad1993/lets-innovate#readme"
+  "homepage": "https://github.com/Zarad1993/lets-innovate"
 }
