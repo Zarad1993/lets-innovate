@@ -8,6 +8,7 @@
         <th>Description</th>
         <th>Target Date</th>
         <th>URL</th>
+        <th>Area</th>
         <th>Delete</th>
       </tr>
     </thead>
@@ -18,6 +19,7 @@
           <td style="width:50%">{{feature.description}}</td>
           <td>{{feature.targetDate}}</td>
           <td>{{feature.ticketUrl}}</td>
+          <td>{{feature.area}}</td>
           <td>
           <a ng-click="delete(feature.clientPriority, feature.client)" class="btn btn-danger btn">
             <span class="glyphicon glyphicon-minus"></span>
@@ -26,4 +28,5 @@
       </tr>
     </tbody>
   </table>
+  <button class="btn btn-primary" ng-click="goBack()">Back</button>
 </div>
