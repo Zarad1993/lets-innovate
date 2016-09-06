@@ -15,7 +15,6 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-mocks": "latest",
-    "angular-material": "latest",
     "oauth-js": "oauthio-web#^0.5.2"
   },
   "resolutions": {
