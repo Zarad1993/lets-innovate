@@ -1,3 +1,4 @@
+[![Bower Version](https://img.shields.io/bower/v/lets-innovate.svg?style=flat)](https://github.com/Zarad1993/lets-innovate/releases) [![NPM Version](http://img.shields.io/npm/v/lets-innovate.svg?style=flat)](https://www.npmjs.org/package/lets-innovate)
 Travis CI [![Build Status](https://travis-ci.org/Zarad1993/lets-innovate.svg?branch=master)](https://travis-ci.org/Zarad1993/lets-innovate/)
 
 # lets-innovate
