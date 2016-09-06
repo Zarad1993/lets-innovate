@@ -1,7 +1,8 @@
 angular.module('innovate.home',[])
 
-.controller('HomeController', function($scope, Client, Features, $window){	
+.controller('HomeController', function($scope, Client, Features, $window, $location){	
 	$scope.feature = {};
+
 
 
 	$scope.startUp = function(){
@@ -21,12 +22,15 @@ angular.module('innovate.home',[])
 		console.log('coming here');
 		Features.addFeature($scope.feature)
 				.then(function(response){
-					console.log(response);
 					$window.location.reload();
-					alert('A message has been sent to the client');
 				})
 				.catch(function(error){
 					console.log(error);
 				});
+	};
+
+	$scope.myTickets = function(email){
+		var data = $window.localStorage.getItem('com.email')
+		$location.path('/admin/home/'+data);
 	}
 })
