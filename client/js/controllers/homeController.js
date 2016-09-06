@@ -21,14 +21,16 @@ angular.module('innovate.home',[])
 	$scope.sendRequest = function(){
 		Features.addFeature($scope.feature)
 				.then(function(response){
-					$window.location.reload();
-					if (Notification.permission === "granted") {
-					// If it's okay let's create a notification
-						spawnNotification('Thank You for submitting your Feature Request, It is very valuable for us and it will be taken into consideration upon the priority number','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','Dear '+$scope.client.name);
+					if(response.status == 201){
+						$window.location.reload();
+						if (Notification.permission === "granted") {
+						// If it's okay let's create a notification
+							spawnNotification('Thank You for submitting your Feature Request, It is very valuable for us and it will be taken into consideration upon the priority number','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','Dear '+$scope.client.name);
+						}
 					}
 				})
 				.catch(function(error){
-					console.log(error);
+					// console.log(error);
 				});
 				// Display Notification
 				function spawnNotification(theBody,theIcon,theTitle) {
