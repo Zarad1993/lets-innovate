@@ -1,4 +1,4 @@
-<div style="padding:50px">
+<div style="margin-left:50px;margin-right:50px;">
 <form ng-init="startUp()">
   <div class="form-group">
     <label for="exampleInputEmail1">Title</label>
@@ -37,8 +37,9 @@
       <option>Reports</option>
     </select>
   </div>
-  <button type="submit" class="btn btn-primary" ng-click="sendRequest()">Submit</button>
+  <button type="submit" class="btn btn-primary" ng-click="sendRequest();playSound();">Submit</button>
   <span class="btn btn-primary" ng-click="logout()">Logout</span>
     <span class="btn btn-primary" ng-click="myTickets()">My Tickets</span>
+  <div id="sound"></div>
 </form>
 </div>

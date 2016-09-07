@@ -22,7 +22,9 @@ angular.module('innovate.home',[])
 		Features.addFeature($scope.feature)
 				.then(function(response){
 					if(response.status == 201){
-						$window.location.reload();
+						setTimeout(function(){
+							$window.location.reload();
+						},1000)
 						if (Notification.permission === "granted") {
 						// If it's okay let's create a notification
 							spawnNotification('Thank You for submitting your Feature Request, It is very valuable for us and it will be taken into consideration upon the priority number','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','Dear '+$scope.client.name);
@@ -42,6 +44,9 @@ angular.module('innovate.home',[])
 					setTimeout(n.close.bind(n), 3000);
 				}
 	};
+	$scope.playSound = function(){   
+	    document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="sounds/filling-your-inbox.mp3" type="audio/mpeg" /></audio>';
+	}
 
 	$scope.myTickets = function(email){
 		var data = $window.localStorage.getItem('com.email')
