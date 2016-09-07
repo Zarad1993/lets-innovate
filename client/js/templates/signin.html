@@ -1,10 +1,35 @@
-<div class="col-md-6 col-md-offset-3" ng-init="checkUser()">
-    <h2 style="text-align:center">Welcome, Please Login</h2>
-      <a style="background-color:lightyellow" class="btn btn-block btn-social btn-twitter" ng-click="signWithAuth('google')">
-        <span class="fa fa-twitter"></span> Sign in with Google
-      </a>
-      <a style="background-color:lightgrey" class="btn btn-block btn-social btn-twitter" ng-click="signWithAuth('github')">
-        <span class="fa fa-twitter"></span> Sign in with GitHub
-      </a>
-
-</div>
+    <header class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                </button>
+            </div>
+        </div>
+    <br>
+    <h3 style="text-align:center">Let's Innovate</h3>
+    </header><!--/header-->    
+    <section id="main-slider" class="no-margin" ng-init="checkUser()">
+        <div class="carousel slide wet-asphalt">
+            <div class="carousel-inner">
+                <div class="item active" style="background-image: url(slider/bg1.jpg)">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="carousel-content centered">
+                                <br><br><br><br><br><br><br><br><br>
+                                    <h2 style="text-align:center" class="animation animated-item-1">We help you achieve</h2>
+                                    <br>
+                                    <h3 style="text-align:center" class="animation animated-item-2">Submit all your Awesome Feature Requests, with our best service,</h3>
+                                    <h3 style="text-align:center" class="animation animated-item-2">We will always make your ideas become reality</h3>
+                                </div>
+                                <button type="button" ng-click="signWithAuth('google')" class="btn btn-primary btn-transparent">Sign in with <span class="fa fa-google"></span> </button><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp; <br>
+                                <button type="button" ng-click="signWithAuth('github')" class="btn btn-primary btn-transparent">Sign in with <span class="fa fa-github"></span> </button>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
