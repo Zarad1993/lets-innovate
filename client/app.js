@@ -3,6 +3,7 @@ angular.module('lets-innovate',[
 	'innovate.services',
 	'innovate.auth',
 	'innovate.admin',
+	'innovate.edit',
 	'innovate.user',
 	'ngRoute'
 	])
@@ -32,6 +33,11 @@ angular.module('lets-innovate',[
 			cache : false, 
 			templateUrl : 'js/templates/userDetails.html',
 			controller : 'UserViewController'
+		})
+		.when('/edit/:email/:priority',{
+			cache : false, 
+			templateUrl : 'js/templates/editFeature.html',
+			controller : 'EditFeatureController'
 		})
 	    .otherwise({
     	  redirectTo: '/'
