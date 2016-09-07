@@ -15,9 +15,22 @@ angular.module('innovate.admin',[])
 	};
 
 	if($location.path() == '/admin/home'){
+		$scope.sortType     = 'name'; // set the default sort type
+		$scope.sortReverse  = false;  // set the default sort order
+
 		Client.getClients()
 			  .then(function(response){
 			  	$scope.clients = response.data
+				for(var i = 0; i < $scope.clients.length; i++){
+					var temp = i;
+					Features.getByEmail($scope.clients[i].email)
+							.then(function(secondResponse){
+								$scope.clients[temp].requests = secondResponse.data.length;
+							})
+							.catch(function(error){
+								console.log(error);
+							})
+				}
 			  });
 		Features.getFeatures()
 				.then(function(response){
@@ -25,7 +38,7 @@ angular.module('innovate.admin',[])
 				})
 				.catch(function(error){
 					console.log(error);
-				})
+				});
 	}
 
 	$scope.showClient = function(data){
