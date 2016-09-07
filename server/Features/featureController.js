@@ -30,6 +30,50 @@ module.exports = {
 			  })
 	},
 
+	getOneFeature : function(req, res){
+		var priority = req.body.priority;
+		var email = req.body.email;
+		Client.findOne({email : email})
+			  .exec(function(err, user){
+			  	if(!user){
+			  		helpers.errorHandler('Error Getting User', req, res);
+			  	} else {
+			  		Feature.findOne({client : user.name, clientPriority : priority})
+			  			   .exec(function(err, feature){
+			  			   	if(!feature){
+			  					helpers.errorHandler('Error Getting User', req, res);   		
+			  			   	} else {
+			  			   		res.status(200).send(feature);
+			  			   	}
+			  			   });
+			  	}
+			  });
+	},
+
+	editFeature : function(req, res){
+		Feature.findOne({_id : req.body._id})
+			   .exec(function(err, feature){
+			   		if(!feature){
+			   			helper.errorHandler('Could Not Get Feature', req, res);
+			   		} else {
+			   			feature.title = req.body.title;
+			   			feature.description = req.body.description;
+			   			feature.clientPriority = req.body.clientPriority;
+			   			feature.targetDate = req.body.targetDate;
+			   			feature.ticketUrl = req.body.ticketUrl;
+			   			feature.area = req.body.area;
+
+			   			feature.save(function(err, saved){
+			   				if(!saved){
+			   					helpers.errorHandler('Error While Saving Data', req, res);
+			   				} else {
+			   					res.status(201).send('Edited Successfully');
+			   				}
+			   			})
+			   		}
+			   })
+	},
+
 	deleteFeature : function(req, res){
 		var priority = req.body.priority;
 		var client = req.body.client;
