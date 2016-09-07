@@ -26,7 +26,11 @@ angular.module('innovate.edit',[])
 							// If it's okay let's create a notification
 							spawnNotification('Your edit has been successfully submitted','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','Dear '+$scope.feature.client);
 						}
-						$location.path('/admin/home/'+email);
+						setTimeout(function(){
+							$location.path('/admin/home/'+email);
+							$scope.$apply();
+						},1000)
+						
 					}
 				})
 				.catch(function(error){
@@ -41,5 +45,7 @@ angular.module('innovate.edit',[])
 					setTimeout(n.close.bind(n), 3000);
 				}
 	}
-
+	$scope.playSound = function(){   
+	    document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="sounds/filling-your-inbox.mp3" type="audio/mpeg" /></audio>';
+	}
 })
