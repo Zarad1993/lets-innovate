@@ -13,6 +13,8 @@ module.exports = function(app){
 	app.post('/api/innov/add', featureController.addNewFeature);
 	app.get('/api/innov/features', featureController.getAllFeatures);
 	app.post('/api/innov/delete', featureController.deleteFeature);
+	app.post('/api/innov/edit', featureController.getOneFeature);
+	app.post('/api/innov/edit/feature', featureController.editFeature);
 
 
 	app.get('/api/innov/clients', clientController.getClients);
