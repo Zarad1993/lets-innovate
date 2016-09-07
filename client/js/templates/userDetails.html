@@ -2,22 +2,53 @@
   <h3><b><i>{{features[0].client}}'s Page<i><b></h3>
   <form>
     <input style="width:20%" class="form-control" ng-model="search" type="text" name="text" placeholder="Search">
+    <br>
   </form>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Priority</th>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Target Date</th>
-        <th>URL</th>
-        <th>Area</th>
+        <th>
+          <a style="color:black" href="#/admin/home/{{email}}" ng-click="sortType = 'name'; sortReverse = !sortReverse">Priority&nbsp;
+          <span ng-show="sortType == 'number' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="sortType == 'number' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+        <th>
+          <a style="color:black" href="#/admin/home/{{email}}" ng-click="sortType = 'name'; sortReverse = !sortReverse">Title&nbsp;
+          <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+        <th>
+          <a style="color:black" href="#/admin/home/{{email}}" ng-click="sortType = 'name'; sortReverse = !sortReverse">Description&nbsp;
+          <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+        <th>
+          <a style="color:black" href="#/admin/home/{{email}}" ng-click="sortType = 'name'; sortReverse = !sortReverse">Target Date&nbsp;
+          <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+        <th>
+          <a style="color:black" href="#/admin/home/{{email}}" ng-click="sortType = 'name'; sortReverse = !sortReverse">URL&nbsp;
+          <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+        <th>
+          <a style="color:black" href="#/admin/home/{{email}}" ng-click="sortType = 'name'; sortReverse = !sortReverse">Area&nbsp;
+          <span ng-show="sortType == 'date' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="sortType == 'date' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
         <th>Delete</th>
         <th ng-show="flag">Edit</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="feature in features | filter:search">
+      <tr ng-repeat="feature in features | orderBy:sortType:sortReverse |filter:search">
           <td>{{feature.clientPriority}}</td>
           <td style="width:15%">{{feature.title}}</td>
           <td style="width:50%">{{feature.description}}</td>

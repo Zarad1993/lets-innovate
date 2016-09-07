@@ -1,10 +1,12 @@
 angular.module('innovate.user',[])
 .controller('UserViewController',function($scope, $window, Features, $location){
-	var email = $location.path().substr(12,$location.path().length);
+	$scope.email = $location.path().substr(12,$location.path().length);
 	$scope.features = [];
+	$scope.sortType     = 'name'; // set the default sort type
+	$scope.sortReverse  = false;  // set the default sort order
 	$scope.flag = true;
 	$scope.runUp = function(){
-		Features.getByEmail(email)
+		Features.getByEmail($scope.email)
 			  .then(function(response){
 			  	if(response.data.length > 0){
 				  	$scope.features = response.data;
