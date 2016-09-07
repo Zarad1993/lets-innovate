@@ -22,12 +22,24 @@ angular.module('innovate.edit',[])
 		Features.editFeature($scope.feature)
 				.then(function(response){
 					if(response.status == 201){
+						if (Notification.permission === "granted") {
+							// If it's okay let's create a notification
+							spawnNotification('Your edit has been successfully submitted','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','Dear '+$scope.feature.client);
+						}
 						$location.path('/admin/home/'+email);
 					}
 				})
 				.catch(function(error){
 					console.log(error);
-				})
+				});
+				function spawnNotification(theBody,theIcon,theTitle) {
+					var options = {
+						body: theBody,
+						icon: theIcon
+					}
+		    	    var n = new Notification(theTitle,options);
+					setTimeout(n.close.bind(n), 3000);
+				}
 	}
 
 })
