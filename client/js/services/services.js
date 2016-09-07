@@ -98,13 +98,44 @@ angular.module('innovate.services',[])
 		.catch(function(error){
 			return error;
 		})
-	}
+	};
+
+	var getOneFeature = function(data){
+		return $http({
+			method : 'POST',
+			url : '/api/innov/edit',
+			data : data
+		})
+		.then(function(response){
+			return response;
+		})
+		.catch(function(error){
+			return error;
+		})
+	};
+
+	var editFeature = function(data){
+		return $http({
+			method : 'POST',
+			url : '/api/innov/edit/feature',
+			data : data
+		})
+		.then(function(response){
+			return response;
+		})
+		.catch(function(error){
+			return error;
+		});
+	};
 
 	return {
 		getFeatures : getFeatures,
 		addFeature : addFeature,
 		getByEmail : getByEmail,
-		deleteFeature : deleteFeature
+		deleteFeature : deleteFeature,
+		getOneFeature : getOneFeature,
+		editFeature : editFeature
+
 	}
 })
 .factory('Admin', function($window,$http){
