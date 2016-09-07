@@ -1,22 +1,42 @@
-<div class="container">
+<div style="margin-left:50px;margin-right:50px;">
   <h2>Welcome</h2>
   <p>Below are the clients subscribed, click on one for more details</p>
+  <br>
      <form>
-      <input style="width:20%" class="form-control" ng-model="search" type="text" name="text" placeholder="Search">
+      <input style="width:30%" class="form-control" ng-model="search" type="text" name="text" placeholder="Search">
     </form>
      <h4 style="float:right;color:red">&nbsp;{{numberOfRequests}}</h4><h4 style="float:right;">Total Requests: </h4>
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
+        <th>#</th>
+        <th>
+          <a style="color:black" href="#/admin/home" ng-click="sortType = 'name'; sortReverse = !sortReverse">Name&nbsp;
+          <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span><small style="color:grey">&nbsp;(Click to sort)</small>
+          </a>
+        </th>
+        <th>
+          <a style="color:black" href="#/admin/home" ng-click="sortType = 'name'; sortReverse = !sortReverse">Email
+          <span ng-show="sortType == 'email' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="sortType == 'email' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
+        <th>
+          <a style="color:black" href="#/admin/home" ng-click="sortType = 'name'; sortReverse = !sortReverse">Pending Requests
+          <span ng-show="sortType == 'number' && !sortReverse" class="fa fa-caret-down"></span>
+          <span ng-show="sortType == 'number' && sortReverse" class="fa fa-caret-up"></span>
+          </a>
+        </th>
         <th>Details</th>
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="client in clients | filter:search">
+      <tr ng-repeat="client in clients| orderBy:sortType:sortReverse | filter:search">
+          <td>{{$index + 1}}</td>
           <td>{{client.name}}</td>
           <td>{{client.email}}</td>
+          <td style="color:red">{{client.requests || 0}}</td>
           <td><button class="btn btn-primary" ng-click="showClient(client.email)">Show Details</button></td>
       </tr>
     </tbody>
