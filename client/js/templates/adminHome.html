@@ -22,12 +22,6 @@
           <span ng-show="sortType == 'email' && sortReverse" class="fa fa-caret-up"></span>
           </a>
         </th>
-        <th>
-          <a style="color:black" href="#/admin/home" ng-click="sortType = 'name'; sortReverse = !sortReverse">Pending Requests
-          <span ng-show="sortType == 'number' && !sortReverse" class="fa fa-caret-down"></span>
-          <span ng-show="sortType == 'number' && sortReverse" class="fa fa-caret-up"></span>
-          </a>
-        </th>
         <th>Details</th>
       </tr>
     </thead>
@@ -36,7 +30,6 @@
           <td>{{$index + 1}}</td>
           <td>{{client.name}}</td>
           <td>{{client.email}}</td>
-          <td style="color:red">{{client.requests || 0}}</td>
           <td><button class="btn btn-primary" ng-click="showClient(client.email)">Show Details</button></td>
       </tr>
     </tbody>
