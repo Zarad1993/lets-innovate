@@ -27,10 +27,13 @@ angular.module('innovate.user',[])
 	}
 
 	$scope.delete = function(priority,client){
-		Features.deleteFeature({priority : priority , client : client})
-				.then(function(response){
-					$window.location.reload();
-				})
+		var getConfirm = confirm('Are you sure you want to delete this feature ?');
+		if(getConfirm){
+			Features.deleteFeature({priority : priority , client : client})
+					.then(function(response){
+						$window.location.reload();
+					})
+		}
 	};
 
 	$scope.goBack = function(){
