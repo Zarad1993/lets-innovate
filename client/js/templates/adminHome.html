@@ -17,7 +17,7 @@
       <tr ng-repeat="client in clients | filter:search">
           <td>{{client.name}}</td>
           <td>{{client.email}}</td>
-          <td><button class="btn btn-primary" ng-click="test(client.email)">Show Details</button></td>
+          <td><button class="btn btn-primary" ng-click="showClient(client.email)">Show Details</button></td>
       </tr>
     </tbody>
   </table>

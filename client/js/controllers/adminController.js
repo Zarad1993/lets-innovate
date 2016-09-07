@@ -28,7 +28,7 @@ angular.module('innovate.admin',[])
 				})
 	}
 
-	$scope.test = function(data){
+	$scope.showClient = function(data){
 		$location.path('/admin/home/'+data);
 	}
 
