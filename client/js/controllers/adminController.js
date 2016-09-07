@@ -1,7 +1,8 @@
 angular.module('innovate.admin',[])
-.controller('AdminController',function($scope, Admin, $window, $location, Client){
+.controller('AdminController',function($scope, Admin, $window, $location, Client, Features){
 	$scope.user ={};
 	$scope.clients = [];
+	$scope.numberOfRequests = 0;
 	$scope.login = function(){
 		Admin.signin($scope.user)
 			 .then(function(response){
@@ -17,7 +18,14 @@ angular.module('innovate.admin',[])
 		Client.getClients()
 			  .then(function(response){
 			  	$scope.clients = response.data
-			  })
+			  });
+		Features.getFeatures()
+				.then(function(response){
+					$scope.numberOfRequests = response.data.length;
+				})
+				.catch(function(error){
+					console.log(error);
+				})
 	}
 
 	$scope.test = function(data){
