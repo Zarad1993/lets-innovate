@@ -3,13 +3,13 @@
   "version": "1.2.0",
   "description": "An application designed to submit a new feature request",
   "scripts": {
-    "start" : "node server/server.js",
+    "start": "node server/server.js",
     "test": "node_modules/.bin/_mocha ./server/spec/**/*.js",
     "postinstall": "npm install -g bower; bower install"
   },
   "main": "server.js",
   "engines": {
-  "node": "6.3.1"
+    "node": "6.3.1"
   },
   "repository": {
     "type": "git",
@@ -23,30 +23,28 @@
   "bugs": {
     "url": "https://github.com/Zarad1993/lets-innovate/issues"
   },
-  "devDependencies":{
+  "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
-    "istanbul": "^0.4.4",
-    "mocha": "^3.0.0",
-    "jshint": "^2.9.2",
     "gulp": "^3.5.6",
+    "gulp-ignore": "^2.0.1",
     "gulp-jshint": "^2.0.1",
-    "gulp-uglify": "^2.0.0"
+    "gulp-uglify": "^2.0.0",
+    "istanbul": "^0.4.4",
+    "jshint": "^2.9.2",
+    "mocha": "^3.0.0"
   },
-
-  "dependencies":{
-    "bower": "latest",
+  "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
+    "bower": "latest",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
     "mongoose": "^4.1.0",
+    "morgan": "^1.1.1",
     "nodemailer": "^2.5.0",
     "nodemailer-smtp-transport": "^2.6.0",
-    "morgan": "^1.1.1",
     "path": "^0.12.7"
-
   },
-
   "homepage": "https://github.com/Zarad1993/lets-innovate"
 }
