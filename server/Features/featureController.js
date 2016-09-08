@@ -125,7 +125,7 @@ module.exports = {
 		Feature.find({client : featureClient})
 			   .exec(function(err, features){
 			   		for(var i = 0; i < features.length; i++){
-			   			if(features[i].clientPriority+'' === featurePriority){
+			   			if(features[i].clientPriority == featurePriority){
 			   				helpers.errorHandler('This number is Prioritized', req, res);
 			   				flag = false;
 			   			} 
