@@ -4,7 +4,7 @@ var uglify = require('gulp-uglify');
 
 
 var paths = {
-	server : './server/server.js'
+	server : ['./server/**/*.js','!./server/spec/**/*.js']
 }
 
 gulp.task('default', ['lint','watch']);
@@ -16,6 +16,6 @@ gulp.task('watch',function(){
 
 gulp.task('lint', function(){
   return gulp.src(['./server/**/*.js'])
-             .pipe(jshint())
+             .pipe(jshint('.jshintrc'))
              .pipe(jshint.reporter('default'))
 })

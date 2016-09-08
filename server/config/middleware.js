@@ -12,7 +12,7 @@ module.exports = function(app,express){
         var _send = res.send;
         var sent = false;
         res.send = function(data){
-            if(sent) return;
+            if(sent) {return;}
             _send.bind(res)(data);
             sent = true;
         };

@@ -1,7 +1,8 @@
+'use strict';
 var expect = require('chai').expect;
 var server = require('./../server.js');
-var chai = require('chai')
-      ,chaiHttp = require('chai-http');
+var chai = require('chai');
+var chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 
@@ -13,7 +14,7 @@ mongoose.Promise = global.Promise;
 var Admin = require('./../Admin/adminModel.js');
 var adminController = require('./../Admin/adminController.js');
 
-describe('Admin Unit Tests', function(done){
+describe('Admin Unit Tests', function(){
 	var newAdmin;
 	beforeEach(function(done){
 		newAdmin = new Admin({
@@ -29,7 +30,7 @@ describe('Admin Unit Tests', function(done){
 	});
 
 	it('every amdin should have an email and password',function(done){
-		newAdmin.save(function(err,user){
+		newAdmin.save(function(){
 			Admin.findOne({'email': 'mohammad.albakri93@gmail.com'})
 				  .exec(function(err,user){
 				  	expect(typeof user.email).to.be.equal('string');
@@ -41,27 +42,27 @@ describe('Admin Unit Tests', function(done){
 	});
 
 	it('should have return array when calling all Admins', function(done){
-		newAdmin.save(function(err,saved){
+		newAdmin.save(function(){
 			Admin.find().exec(function(err,admins){
 		      	expect(admins.length).to.be.equal(1);
 		      	done();			
-			})
+			});
 		});
 	});
 
 	it('should have a sign in method for every admin' , function(done){
 		expect(typeof adminController.signin).to.be.equal('function');
 		done();
-	})
+	});
 
 	it('should have a signup method for every admin', function(done){
 		expect(typeof adminController.signup).to.be.equal('function');
 		done();
-	})
+	});
 
 });
 
-describe('Admin Integration Tests', function(done){
+describe('Admin Integration Tests', function(){
 	var newAdmin;
 	beforeEach(function(done){
 		newAdmin = new Admin({
@@ -76,7 +77,7 @@ describe('Admin Integration Tests', function(done){
 	afterEach(function(done){
 		Admin.collection.drop();
 		done();
-	})
+	});
 
 	it('should sign up when passing the required keys', function(done){
 		chai.request(server)
@@ -89,7 +90,7 @@ describe('Admin Integration Tests', function(done){
 				expect(res.status).to.be.equal(201);
 				expect(res.req.res.text).to.be.equal('New User is Created');
 				done();
-			})
+			});
 	});
 
 	it('should handle error when passing wrong keys when signing up', function(done){
@@ -102,14 +103,14 @@ describe('Admin Integration Tests', function(done){
 			.end(function(err,res){
 				expect(res.status).to.be.equal(500);
 				done();
-			})
+			});
 	});
 
 	it('should sign in by getting a token', function(done){
 		var newAdmin = new Admin({
 			email : 'mohammad@gmail.com', 
 			password : 'innovate'
-		})
+		});
 		newAdmin.save(function(err, saved){
 			if(saved){
 				chai.request(server)
@@ -119,7 +120,7 @@ describe('Admin Integration Tests', function(done){
 						password : 'innovate'
 					})
 					.end(function(err, res){
-						expect(res.body).to.have.property('token')
+						expect(res.body).to.have.property('token');
 						expect(res.status).to.be.equal(200);
 						done();
 					});				
@@ -138,6 +139,6 @@ describe('Admin Integration Tests', function(done){
 			.end(function(err, res){
 				expect(res.status).to.be.equal(500);
 				done();
-			})
+			});
 	});
 });

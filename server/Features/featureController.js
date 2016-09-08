@@ -1,4 +1,5 @@
-var sendEmail = require('./../emailNotifications.js');
+'use strict';
+// var sendEmail = require('./../emailNotifications.js');
 var Client = require('./../Client/clientModel.js'),
 	Feature = require('./featureModel.js'),
 	helpers = require('./../config/helpers.js');
@@ -15,19 +16,19 @@ module.exports = {
 							.sort({'clientPriority' : '1'})
 							.exec(function(err, features){
 								if(!features){
-									helpers.errorHandler('Error Providing Features', req, res)
+									helpers.errorHandler('Error Providing Features', req, res);
 								} else {
 									var filteredFeatures = [];
 									for(var i =0 ; i < features.length; i++){
-										if(features[i].client == user.name){
+										if(features[i].client === user.name){
 											filteredFeatures.push(features[i]);
 										}
 									}
 									res.status(200).send(filteredFeatures);
 								}
-							})
+							});
 			  	}
-			  })
+			  });
 	},
 
 	getOneFeature : function(req, res){
@@ -54,7 +55,7 @@ module.exports = {
 		Feature.findOne({_id : req.body._id})
 			   .exec(function(err, feature){
 			   		if(!feature){
-			   			helper.errorHandler('Could Not Get Feature', req, res);
+			   			helpers.errorHandler('Could Not Get Feature', req, res);
 			   		} else {
 			   			feature.title = req.body.title;
 			   			feature.description = req.body.description;
@@ -69,9 +70,9 @@ module.exports = {
 			   				} else {
 			   					res.status(201).send('Edited Successfully');
 			   				}
-			   			})
+			   			});
 			   		}
-			   })
+			   });
 	},
 
 	deleteFeature : function(req, res){
@@ -85,7 +86,7 @@ module.exports = {
 			   		} else {
 			   			res.status(500).send('Error Deleting Requested Feature');
 			   		}
-			   })
+			   });
 	},
 
 	getAllFeatures : function(req, res){
@@ -107,7 +108,7 @@ module.exports = {
 			featureClient = req.body.client,
 			featureURL = req.body.ticketUrl,
 			featureDate = req.body.targetDate,
-			featureArea = req.body.area
+			featureArea = req.body.area,
 			featurePriority = req.body.clientPriority,
 			flag = true;
 
@@ -124,7 +125,7 @@ module.exports = {
 		Feature.find({client : featureClient})
 			   .exec(function(err, features){
 			   		for(var i = 0; i < features.length; i++){
-			   			if(features[i].clientPriority == featurePriority){
+			   			if(features[i].clientPriority+'' === featurePriority){
 			   				helpers.errorHandler('This number is Prioritized', req, res);
 			   				flag = false;
 			   			} 

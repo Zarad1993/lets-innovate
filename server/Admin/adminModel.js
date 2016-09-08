@@ -1,3 +1,4 @@
+'use strict';
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 var SALT_WORK_FACTOR = 10;
@@ -9,7 +10,7 @@ var adminSchema = new Schema({
   name : {type : String}, 
 	email : {type : String , index : {unique : true}},
 	password : {type : String}
-})
+});
 
 adminSchema.pre('save', function(next){
   var admin = this;
@@ -33,7 +34,7 @@ adminSchema.pre('save', function(next){
       next();
     });
   });	
-})
+});
 
 var Admin = mongoose.model('Admin', adminSchema);
 

@@ -1,7 +1,8 @@
+'use strict';
 var expect = require('chai').expect;
 var server = require('./../server.js');
-var chai = require('chai')
-      ,chaiHttp = require('chai-http');
+var chai = require('chai');
+var chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
 
@@ -14,12 +15,12 @@ var Feature = require('./../Features/featureModel.js');
 var featureController = require('./../Features/featureController.js');
 
 
-describe('Feature unit tests', function(done){
+describe('Feature unit tests', function(){
 
 	afterEach(function(done){
 		Feature.collection.drop();
 		done();
-	})
+	});
 
 	it('should have a feature Model with the right fields', function(done){
 		var newFeature = new Feature({
@@ -40,8 +41,8 @@ describe('Feature unit tests', function(done){
 			expect(saved).to.have.property('targetDate');
 			expect(saved).to.have.property('area');
 			done();
-		})
-	})
+		});
+	});
 
 	it('should have a function that gets features', function(done){
 		expect(typeof featureController.getAllFeatures).to.be.equal('function');
@@ -52,4 +53,4 @@ describe('Feature unit tests', function(done){
 		expect(typeof featureController.addNewFeature).to.be.equal('function');
 		done();
 	});
-})
+});

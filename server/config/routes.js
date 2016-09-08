@@ -9,7 +9,7 @@ module.exports = function(app){
 	app.post('/api/innov/signin', adminController.signin);
 	app.post('/api/innov/signup', adminController.signup);
 
-	app.get('/api/innov/get/:email', featureController.getByEmail)
+	app.get('/api/innov/get/:email', featureController.getByEmail);
 	app.post('/api/innov/add', featureController.addNewFeature);
 	app.get('/api/innov/features', featureController.getAllFeatures);
 	app.post('/api/innov/delete', featureController.deleteFeature);

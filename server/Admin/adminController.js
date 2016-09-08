@@ -1,3 +1,4 @@
+'use strict';
 var Admin = require('./adminModel.js');
 var jwt = require('jwt-simple');
 var helpers = require('./../config/helpers.js');
