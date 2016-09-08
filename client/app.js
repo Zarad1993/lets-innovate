@@ -1,3 +1,4 @@
+'use strict';
 angular.module('lets-innovate',[
 	'innovate.home',
 	'innovate.services',
@@ -8,7 +9,7 @@ angular.module('lets-innovate',[
 	'ngRoute',
 	'ui'
 	])
-.config(function($routeProvider, $httpProvider){
+.config(function($routeProvider){
 	$routeProvider
 		.when('/',{
 			cache : false,
@@ -48,39 +49,35 @@ angular.module('lets-innovate',[
 	OAuth.initialize('L47TybIQ1vyV7pZ-2OpJ5NNb3Qo');
 	function notifyMe() {
 		// Let's check if the browser supports notifications
-		if (!("Notification" in window)) {
-			alert("This browser does not support desktop notification");
+		if (!('Notification' in window)) {
+			window.alert('This browser does not support desktop notification');
 		}
 
 		// Let's check whether notification permissions have already been granted
-		else if (Notification.permission === "granted") {
-		// If it's okay let's create a notification
-			// NOTHING HERE
-		}
-
+		
 		// Otherwise, we need to ask the user for permission
 		else if (Notification.permission !== 'denied') {
 			Notification.requestPermission(function (permission) {
 			  // If the user accepts, let's create a notification
-			  if (permission === "granted") {
-			    //NOTHING HERE
+			  if (permission === 'granted') {
+			    new Notification('Thank you');
 			  }
 			});
 		}
 	}
 	notifyMe();
-	$rootScope.$on('$routeChangeStart', function (evt, next, current) {
+	$rootScope.$on('$routeChangeStart', function (evt, next) {
 		if(!Client.isAuth() && next.$$route.originalPath !== '/admin'){
 			$location.path('/signin');
 		} else if($window.localStorage.getItem('com.email') && $window.localStorage.getItem('com.admin')){
-			alert('Both Are in');
+			window.alert('Both Are in');
 			Client.signout();
 		} else if($window.localStorage.getItem('com.client') && next.$$route.originalPath === '/admin/home'){
-			alert('There is no such access');
+			window.alert('There is no such access');
 			$location.path('/');
 		} else if($window.localStorage.getItem('com.admin') && next.$$route.originalPath === '/'){
-			alert('Sorry Admin, You cannot be here');
+			window.alert('Sorry Admin, You cannot be here');
 			$location.path('/admin/home');
 		} 
 	});	
-})
+});

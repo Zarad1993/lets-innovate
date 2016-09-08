@@ -5,7 +5,7 @@ var ignore = require('gulp-ignore');
 
 
 var paths = {
-	server : ['./server/**/*.js','!./server/spec/**/*.js']
+	server : ['./server/**/*.js','./client/js/**/*.js','./client/app.js']
 }
 
 gulp.task('default', ['lint','watch']);
@@ -16,7 +16,7 @@ gulp.task('watch',function(){
 
 
 gulp.task('lint', function(){
-    return gulp.src(['./server/**/*.js'])
+    return gulp.src(['./server/**/*.js' , './client/js/**/*.js', './client/app.js'])
     		   .pipe(ignore.exclude(/Spec\.js/))
                .pipe(jshint('.jshintrc'))
                .pipe(jshint.reporter('default'))

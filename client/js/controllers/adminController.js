@@ -1,3 +1,4 @@
+'use strict';
 angular.module('innovate.admin',[])
 .controller('AdminController',function($scope, Admin, $window, $location, Client, Features){
 	$scope.user ={};
@@ -11,16 +12,16 @@ angular.module('innovate.admin',[])
 				 	$window.localStorage.setItem('com.admin', true);
 				 	$location.path('/admin/home');
 			 	}
-			 })
+			 });
 	};
 
-	if($location.path() == '/admin/home'){
+	if($location.path() === '/admin/home'){
 		$scope.sortType     = 'name'; // set the default sort type
 		$scope.sortReverse  = false;  // set the default sort order
 
 		Client.getClients()
 			  .then(function(response){
-			  	$scope.clients = response.data
+			  	$scope.clients = response.data;
 			  });
 		Features.getFeatures()
 				.then(function(response){
@@ -33,9 +34,9 @@ angular.module('innovate.admin',[])
 
 	$scope.showClient = function(data){
 		$location.path('/admin/home/'+data);
-	}
+	};
 
 	$scope.logout = function(){
 		Client.signout();
-	}
+	};
 });

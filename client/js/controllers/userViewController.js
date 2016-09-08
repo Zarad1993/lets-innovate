@@ -1,3 +1,4 @@
+'use strict';
 angular.module('innovate.user',[])
 .controller('UserViewController',function($scope, $window, Features, $location){
 	$scope.email = $location.path().substr(12,$location.path().length);
@@ -19,22 +20,24 @@ angular.module('innovate.user',[])
 			  		} else {
 			  			$location.path('/');
 			  		}
-			  		alert('This client has no more feature Requests');
+			  		window.alert('This client has no more feature Requests');
 			  	}
 
 			  });
 		if($window.localStorage.getItem('com.admin')){
 			$scope.flag = false;
 		}
-	}
+	};
 
 	$scope.delete = function(priority,client){
-		var getConfirm = confirm('Are you sure you want to delete this feature ?');
+		var getConfirm = window.confirm('Are you sure you want to delete this feature ?');
 		if(getConfirm){
 			Features.deleteFeature({priority : priority , client : client})
 					.then(function(response){
-						$window.location.reload();
-					})
+						if(response.status === 201){
+							$window.location.reload();
+						}
+					});
 		}
 	};
 
@@ -49,6 +52,6 @@ angular.module('innovate.user',[])
 
 	$scope.edit = function(number){
 		$location.path('/edit/'+$scope.email+'/'+number);
-	}
+	};
 
 });
