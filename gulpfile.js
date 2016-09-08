@@ -2,8 +2,9 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 var ignore = require('gulp-ignore');
-var pump = require('pump');
 var concat = require('gulp-concat');
+var uglifycss = require('gulp-uglifycss');
+var rename = require('gulp-rename');
 
 
 
@@ -11,7 +12,7 @@ var paths = {
 	server : ['./server/**/*.js','./client/js/**/*.js','./client/app.js']
 }
 
-gulp.task('default', ['lint','scripts','watch']);
+gulp.task('default', ['lint','scripts','css','project','watch']);
 
 gulp.task('watch',function(){
 	gulp.watch(paths.server, ['lint']);
@@ -25,17 +26,28 @@ gulp.task('lint', function(){
                .pipe(jshint.reporter('default'))
 });
 
-gulp.task('compress', function(cb){
-	pump([
-		gulp.src('./client/lib/**/*.js'),
-		uglify(),
-		gulp.dest('client/dist')
-		],cb)
-});
+gulp.task('css', function(){
+	gulp.src(['./client/lib/bootstrap/dist/css/bootstrap.min.css','.client/lib/font-awesome/css/font-awesome.min.css','./client/lib/prettyphoto/css/prettyPhoto.css', './client/lib/animate.css/animate.css','./client/styles/style.css'])
+	.pipe(concat('styles.min.css'))
+	.pipe(uglifycss({
+		"maxLineLen": 80,
+		"uglyComments": true
+	}))
+	.pipe(gulp.dest('./client/dist/'))
+})
 
 gulp.task('scripts', function() {
-  gulp.src(['./client/lib/oauth-js/dist/oauth.js', './client/lib/angular/angular.min.js', './client/lib/angular-ui/build/angular-ui.min.js', './client/lib/angular-route/angular-route.js'])
-    .pipe(concat('all.js'))
+  gulp.src(['./client/lib/jquery/dist/jquery.min.js','./client/lib/jquery-ui/jquery-ui.min.js','./client/lib/oauth-js/dist/oauth.js', './client/lib/angular/angular.min.js', './client/lib/angular-ui/build/angular-ui.min.js', './client/lib/angular-route/angular-route.js'])
+    .pipe(concat('scripts.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./client/dist/'))
+});
+
+gulp.task('project', function(){
+	gulp.src(['./client/js/controllers/editFeature.js','./client/js/controllers/userViewController.js','./client/js/controllers/adminController.js','./client/js/controllers/auth.js','./client/js/controllers/homeController.js','./client/js/services/services.js','./client/app.js'])
+		.pipe(concat('lets-innovate.js'))
+		.pipe(gulp.dest('./client/dist'))
+		.pipe(rename('lets-innovate.min.js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./client/dist'))
 });
