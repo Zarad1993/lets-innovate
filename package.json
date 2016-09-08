@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node server/server.js",
     "test": "node_modules/.bin/_mocha ./server/spec/**/*.js",
-    "postinstall": "npm install -g bower; bower install"
+    "postinstall": "npm install -g bower; bower install;gulp"
   },
   "main": "server.js",
   "engines": {
@@ -29,8 +29,9 @@
     "gulp": "^3.5.6",
     "gulp-ignore": "^2.0.1",
     "gulp-jshint": "^2.0.1",
+    "gulp-rename": "^1.2.2",
     "gulp-uglify": "^2.0.0",
-    "istanbul": "^0.4.4",
+    "gulp-uglifycss": "^1.0.6",
     "jshint": "^2.9.2",
     "mocha": "^3.0.0"
   },
