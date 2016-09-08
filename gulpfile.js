@@ -37,7 +37,7 @@ gulp.task('css', function(){
 })
 
 gulp.task('scripts', function() {
-  gulp.src(['./client/lib/jquery/dist/jquery.min.js','./client/lib/jquery-ui/jquery-ui.min.js','./client/lib/oauth-js/dist/oauth.js', './client/lib/angular/angular.min.js', './client/lib/angular-ui/build/angular-ui.min.js', './client/lib/angular-route/angular-route.js'])
+  gulp.src(['./client/lib/jquery/dist/jquery.min.js','./client/lib/jquery-ui/jquery-ui.min.js','./client/lib/angular/angular.min.js', './client/lib/angular-ui/build/angular-ui.min.js', './client/lib/angular-route/angular-route.js'])
     .pipe(concat('scripts.js'))
     .pipe(uglify())
     .pipe(gulp.dest('./client/dist/'))
