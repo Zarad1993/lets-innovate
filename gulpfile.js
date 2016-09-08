@@ -5,6 +5,7 @@ var ignore = require('gulp-ignore');
 var concat = require('gulp-concat');
 var uglifycss = require('gulp-uglifycss');
 var rename = require('gulp-rename');
+var exec = require('child_process').exec;
 
 
 
@@ -12,12 +13,20 @@ var paths = {
 	server : ['./server/**/*.js','./client/js/**/*.js','./client/app.js']
 }
 
-gulp.task('default', ['lint','scripts','css','project','watch']);
+gulp.task('default', ['install','lint','scripts','css','project','watch']);
 
 gulp.task('watch',function(){
 	gulp.watch(paths.server, ['lint']);
 });
 
+
+gulp.task('install', function (cb) {
+  exec('bower install', function (err, stdout, stderr) {
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  });
+})
 
 gulp.task('lint', function(){
     return gulp.src(['./server/**/*.js' , './client/js/**/*.js', './client/app.js'])
