@@ -26,6 +26,10 @@ npm install && bower install
 ```sh
 sudo mongod
 ```
+## Localhost
+```sh
+http://localhost:8000/#/
+```
 ## Styling guide
 ```sh
 gulp
