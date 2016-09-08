@@ -1,6 +1,6 @@
 'use strict';
-angular.module('lets-innovate',[
-	'innovate.home',
+angular.module('lets-innovate',[ // Lets - innovate Modules
+	'innovate.home', 
 	'innovate.services',
 	'innovate.auth',
 	'innovate.admin',
@@ -10,6 +10,9 @@ angular.module('lets-innovate',[
 	'ui'
 	])
 .config(function($routeProvider){
+
+	// Setting routes and their controllers 
+	// With cache always being false
 	$routeProvider
 		.when('/',{
 			cache : false,
@@ -46,6 +49,7 @@ angular.module('lets-innovate',[
     	});
 })
 .run(function($rootScope, $location, Client, $window){
+	// Initializing OAuth by passing API KEY
 	OAuth.initialize('L47TybIQ1vyV7pZ-2OpJ5NNb3Qo');
 	function notifyMe() {
 		// Let's check if the browser supports notifications
