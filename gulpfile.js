@@ -12,11 +12,11 @@ var paths = {
 	server : ['./server/**/*.js','./client/js/**/*.js','./client/app.js']
 }
 
-gulp.task('default', ['run','lint','scripts','css','project','watch']);
+gulp.task('default', ['lint','scripts','css','project','watch']);
 gulp.task('uglify', ['scripts','css','project']);
 
 gulp.task('watch',function(){
-	gulp.watch(paths.server, ['lint']);
+	gulp.watch(paths.server, ['lint','css','project']);
 });
 
 gulp.task('lint', function(){
