@@ -45,8 +45,6 @@
     "jwt-simple": "^0.2.0",
     "mongoose": "^4.1.0",
     "morgan": "^1.1.1",
-    "nodemailer": "^2.5.0",
-    "nodemailer-smtp-transport": "^2.6.0",
     "path": "^0.12.7"
   },
   "homepage": "https://github.com/Zarad1993/lets-innovate"
