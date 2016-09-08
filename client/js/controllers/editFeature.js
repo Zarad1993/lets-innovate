@@ -1,3 +1,4 @@
+'use strict';
 angular.module('innovate.edit',[])
 .controller('EditFeatureController', function($scope, $window, $location, Client, Features){
 
@@ -15,37 +16,37 @@ angular.module('innovate.edit',[])
 				})
 				.catch(function(error){
 					console.log(error);
-				})
+				});
 	};
 
 	$scope.submitEdit = function(){
+		function spawnNotification(theBody,theIcon,theTitle) {
+			var options = {
+				body: theBody,
+				icon: theIcon
+			};
+    	    var n = new Notification(theTitle,options);
+			setTimeout(n.close.bind(n), 3000);
+		}
 		Features.editFeature($scope.feature)
 				.then(function(response){
-					if(response.status == 201){
-						if (Notification.permission === "granted") {
+					if(response.status === 201){
+						if (Notification.permission === 'granted') {
 							// If it's okay let's create a notification
 							spawnNotification('Your edit has been successfully submitted','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','Dear '+$scope.feature.client);
 						}
 						setTimeout(function(){
 							$location.path('/admin/home/'+email);
 							$scope.$apply();
-						},1000)
+						},1000);
 						
 					}
 				})
 				.catch(function(error){
 					console.log(error);
 				});
-				function spawnNotification(theBody,theIcon,theTitle) {
-					var options = {
-						body: theBody,
-						icon: theIcon
-					}
-		    	    var n = new Notification(theTitle,options);
-					setTimeout(n.close.bind(n), 3000);
-				}
-	}
+	};
 	$scope.playSound = function(){   
-	    document.getElementById("sound").innerHTML='<audio autoplay="autoplay"><source src="sounds/filling-your-inbox.mp3" type="audio/mpeg" /></audio>';
-	}
-})
+	    document.getElementById('sound').innerHTML='<audio autoplay="autoplay"><source src="sounds/filling-your-inbox.mp3" type="audio/mpeg" /></audio>';
+	};
+});
