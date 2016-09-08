@@ -48,7 +48,7 @@ angular.module('innovate.user',[])
 
 
 	$scope.edit = function(number){
-		$location.path('/edit/'+email+'/'+number);
+		$location.path('/edit/'+$scope.email+'/'+number);
 	}
 
 });
