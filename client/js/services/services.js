@@ -2,17 +2,23 @@
 angular.module('innovate.services',[])
 
 .factory('Client', function($window, $http, $location){
+	// Our services for client
 
+	// Check if user is Authenticated
     var isAuth = function () {
         return !!$window.localStorage.getItem('com.innov');
 	};
 
+
+	// Signout Function
 	var signout = function () {
 	    localStorage.clear();
 	    $window.localStorage.clear();
 	    $location.path('/signin');
 	};
 
+
+	// Check if client is in our queries
 	var checkClient = function(name){
 		return $http({
 			method : 'POST',
@@ -27,6 +33,7 @@ angular.module('innovate.services',[])
 		});
 	};
 
+	// Call all clients
 	var getClients = function(){
 		return $http({
 			method : 'GET',
@@ -47,6 +54,10 @@ angular.module('innovate.services',[])
 	};
 })
 .factory('Features', function($window,$http){
+
+	// Feature Services 
+
+	// Get all features
 	var getFeatures = function(){
 		return $http({
 			method : 'GET',
@@ -60,6 +71,8 @@ angular.module('innovate.services',[])
 		});
 	};
 
+
+	// Get features by email
 	var getByEmail = function(email){
 		return $http({
 			method : 'GET' ,
@@ -73,6 +86,7 @@ angular.module('innovate.services',[])
 		});
 	};
 
+	// Add a new Feature
 	var addFeature = function(data){
 		return $http({
 			method : 'POST' ,
@@ -87,6 +101,7 @@ angular.module('innovate.services',[])
 		});
 	};
 
+	// Delete a Feature
 	var deleteFeature = function(data){
 		return $http({
 			method : 'POST', 
@@ -101,6 +116,8 @@ angular.module('innovate.services',[])
 		});
 	};
 
+
+	// Call one Feature
 	var getOneFeature = function(data){
 		return $http({
 			method : 'POST',
@@ -115,6 +132,7 @@ angular.module('innovate.services',[])
 		});
 	};
 
+	// Edit a feature
 	var editFeature = function(data){
 		return $http({
 			method : 'POST',
@@ -140,6 +158,9 @@ angular.module('innovate.services',[])
 	};
 })
 .factory('Admin', function($window,$http){
+	// Admin Services
+
+	// Admin signin
 	var signin = function(data){
 		return $http({
 			method : 'POST' , 
