@@ -5,7 +5,8 @@ angular.module('lets-innovate',[
 	'innovate.admin',
 	'innovate.edit',
 	'innovate.user',
-	'ngRoute'
+	'ngRoute',
+	'ui'
 	])
 .config(function($routeProvider, $httpProvider){
 	$routeProvider
