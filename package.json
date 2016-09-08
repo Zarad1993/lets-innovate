@@ -3,10 +3,9 @@
   "version": "1.2.0",
   "description": "An application designed to submit a new feature request",
   "scripts": {
-    "preinstall" : "npm install",
-    "start": "node server/server.js",
+    "start": "gulp",
     "test": "node_modules/.bin/_mocha ./server/spec/**/*.js",
-    "postinstall": "gulp"
+    "postinstall": "npm install -g bower; bower install;"
   },
   "main": "server.js",
   "engines": {

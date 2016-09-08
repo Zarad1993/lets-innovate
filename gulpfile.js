@@ -13,15 +13,15 @@ var paths = {
 	server : ['./server/**/*.js','./client/js/**/*.js','./client/app.js']
 }
 
-gulp.task('default', ['install','lint','scripts','css','project','watch']);
+gulp.task('default', ['run','lint','scripts','css','project','watch']);
 
 gulp.task('watch',function(){
 	gulp.watch(paths.server, ['lint']);
 });
 
 
-gulp.task('install', function (cb) {
-  exec('bower install', function (err, stdout, stderr) {
+gulp.task('run', function (cb) {
+  exec('node server/server.js', function (err, stdout, stderr) {
     console.log(stdout);
     console.log(stderr);
     cb(err);
