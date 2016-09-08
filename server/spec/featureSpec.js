@@ -5,22 +5,14 @@ var chai = require('chai');
 var chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
-
-// Mongoose deprecated Promise
-var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
-// Models and controllers 
-
-var Feature = require('./../Features/featureModel.js');
-var featureController = require('./../Features/featureController.js');
+var clientController = require('./../Client/clientController');
+var Client = require('./../Client/clientModel');
+var Feature = require('./../Features/featureModel');
+var featureController = require('./../Features/featureController');
 
 
 describe('Feature unit tests', function(){
 
-	afterEach(function(done){
-		Feature.collection.drop();
-		done();
-	});
 
 	it('should have a feature Model with the right fields', function(done){
 		var newFeature = new Feature({
@@ -42,6 +34,7 @@ describe('Feature unit tests', function(){
 			expect(saved).to.have.property('area');
 			done();
 		});
+		Feature.collection.drop();
 	});
 
 	it('should have a function that gets features', function(done){
@@ -53,4 +46,38 @@ describe('Feature unit tests', function(){
 		expect(typeof featureController.addNewFeature).to.be.equal('function');
 		done();
 	});
+
+	it('should have a function that deletes a feature',function(done){
+		expect(typeof featureController.deleteFeature).to.be.equal('function');
+		done();
+	});
+
+	it('should have a function that edits a feature', function(done){
+		expect(typeof featureController.editFeature).to.be.equal('function');
+		done();
+	});
+
+	it('should have a function that gets One Feature', function(done){
+		expect(typeof featureController.getOneFeature).to.be.equal('function');
+		done();
+	});
+
+	it('should have a function that get a feature when passing email in params', function(done){
+		expect(typeof featureController.getByEmail).to.be.equal('function');
+		done();
+	});
+
 });
+
+describe('Integration Tests', function(){
+	beforeEach(function(done){
+		var client = new Client({
+			'name' : 'Mohammad Albakri',
+			'email' : 'mohammad.albakri93@gmail.com'
+		});
+		client.save();
+		done();
+	});
+
+
+})
