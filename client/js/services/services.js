@@ -1,3 +1,4 @@
+'use strict';
 angular.module('innovate.services',[])
 
 .factory('Client', function($window, $http, $location){
@@ -24,7 +25,7 @@ angular.module('innovate.services',[])
 		.catch(function(error){
 			return error;
 		});
-	}
+	};
 
 	var getClients = function(){
 		return $http({
@@ -43,7 +44,7 @@ angular.module('innovate.services',[])
 		signout : signout,
 		checkClient: checkClient,
 		getClients : getClients
-	}
+	};
 })
 .factory('Features', function($window,$http){
 	var getFeatures = function(){
@@ -56,7 +57,7 @@ angular.module('innovate.services',[])
 		})
 		.catch(function(error){
 			return error;
-		})
+		});
 	};
 
 	var getByEmail = function(email){
@@ -70,7 +71,7 @@ angular.module('innovate.services',[])
 		.catch(function(error){
 			return error;
 		});
-	}
+	};
 
 	var addFeature = function(data){
 		return $http({
@@ -97,7 +98,7 @@ angular.module('innovate.services',[])
 		})
 		.catch(function(error){
 			return error;
-		})
+		});
 	};
 
 	var getOneFeature = function(data){
@@ -111,7 +112,7 @@ angular.module('innovate.services',[])
 		})
 		.catch(function(error){
 			return error;
-		})
+		});
 	};
 
 	var editFeature = function(data){
@@ -136,7 +137,7 @@ angular.module('innovate.services',[])
 		getOneFeature : getOneFeature,
 		editFeature : editFeature
 
-	}
+	};
 })
 .factory('Admin', function($window,$http){
 	var signin = function(data){
@@ -151,8 +152,8 @@ angular.module('innovate.services',[])
 		.catch(function(error){
 			return error;
 		});
-	}
+	};
 	return {
 		signin : signin
-	}
+	};
 });
