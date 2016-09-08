@@ -39,6 +39,8 @@ angular.module('innovate.home',[])
 						// If it's okay let's create a notification
 							spawnNotification('Thank You for submitting your Feature Request, It is very valuable for us and it will be taken into consideration upon the priority number','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','Dear '+$scope.client.name);
 						}
+					} else {
+							spawnNotification('Error!\nPlease Change the Priority Number to procceed','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','Dear '+$scope.client.name);
 					}
 				})
 				.catch(function(error){
