@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
+var ignore = require('gulp-ignore');
 
 
 var paths = {
@@ -15,7 +16,8 @@ gulp.task('watch',function(){
 
 
 gulp.task('lint', function(){
-  return gulp.src(['./server/**/*.js'])
-             .pipe(jshint('.jshintrc'))
-             .pipe(jshint.reporter('default'))
+    return gulp.src(['./server/**/*.js'])
+    		   .pipe(ignore.exclude(/Spec\.js/))
+               .pipe(jshint('.jshintrc'))
+               .pipe(jshint.reporter('default'))
 })
