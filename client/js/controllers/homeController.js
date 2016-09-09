@@ -23,7 +23,6 @@ angular.module('innovate.home',[])
 
 		Features.getByEmail($window.localStorage.getItem('com.email'))
 			    .then(function(response){
-			    	console.log(response);
 			    	$scope.numberOfFeatures = response.data.length;
 			    })
 			    .catch(function(error){
