@@ -3,7 +3,6 @@ angular.module('innovate.home',[])
 
 .controller('HomeController', function($scope, Client, Features, $window, $location){	
 	$scope.feature = {};
-
 	// This is our Home Controller 
 	// Which is the heart of the application, where the user submits
 	// a new feature request
@@ -13,6 +12,7 @@ angular.module('innovate.home',[])
 	// user using the application 
 	$scope.startUp = function(){
 		$scope.client = {};
+		$scope.numberOfFeatures = 0;
 		Client.checkClient({email:$window.localStorage.getItem('com.email')})
 			  .then(function(response){
 			  	$scope.client.name = response.data.name;
@@ -20,7 +20,17 @@ angular.module('innovate.home',[])
 			  .catch(function(error){
 			  	console.log(error);
 			  });
+
+		Features.getByEmail($window.localStorage.getItem('com.email'))
+			    .then(function(response){
+			    	console.log(response);
+			    	$scope.numberOfFeatures = response.data.length;
+			    })
+			    .catch(function(error){
+			    	console.log(error);
+			    })  
 	};
+
 
 	// Logout function
 	$scope.logout = function(){
@@ -40,7 +50,7 @@ angular.module('innovate.home',[])
 			setTimeout(n.close.bind(n), 3000);
 		}
 
-
+		$scope.feature.clientPriority = $scope.numberOfFeatures + 1;
 		Features.addFeature($scope.feature)
 				.then(function(response){
 					if(response.status === 201){
