@@ -71,4 +71,24 @@ angular.module('innovate.user',[])
 		$location.path('/edit/'+$scope.email+'/'+number);
 	};
 
+	$scope.testing = [1,2,3,4];
+
+	$scope.test = function(){
+		console.log('test');
+	};
+
+	$scope.sortableOptions = {
+		update: function(e, ui) {},
+		stop : function(e, ui){console.log($scope.test())}
+	};
+
+	$scope.submitSort = function(){
+		console.log($scope.features);
+	}
 });
+
+
+
+
+
+
