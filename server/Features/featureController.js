@@ -16,7 +16,7 @@ module.exports = {
 							.sort({'clientPriority' : '1'})
 							.exec(function(err, features){
 								if(!features){
-									helpers.errorHandler('Error Providing Features', req, res);
+									return helpers.errorHandler('Error Providing Features', req, res);
 								} else {
 									var filteredFeatures = [];
 									for(var i =0 ; i < features.length; i++){
@@ -24,9 +24,11 @@ module.exports = {
 											filteredFeatures.push(features[i]);
 										}
 									}
-									res.status(200).send(filteredFeatures);
+									return res.status(200).send(filteredFeatures);
 								}
 							});
+			  	} else {
+		  			helpers.errorHandler('Error Providing Features', req, res);
 			  	}
 			  });
 	},
@@ -138,7 +140,6 @@ module.exports = {
 								if(flag){
 						   			newFeature.save(function(err,saved){
 						   				if(saved){
-						   					// TODO SEND TO THE ADMIN AN EMAIL OF THE NEW FEATURE REQUEST
 						   					Client.findOne({name : saved.client})
 						   						  .exec(function(err, client){
 						   						  	console.log(client.email);
@@ -150,6 +151,31 @@ module.exports = {
 			   			  	}
 			   			  });
 			   });
+	},
+
+	reorder : function(req, res){
+		var array = req.body.array;
+		var oldFeatures = req.body.features;
+		if(array.length === 0){
+			 return res.status(201).send('Reordered')
+		}
+		oldFeatures.forEach(function(i){
+			Feature.findOne({_id : i._id})
+				   .exec(function(err, feature){
+				   		array.forEach(function(element,index){
+							if(element.before == feature.clientPriority){
+								feature.clientPriority = element.after;
+								req.body.array.splice(index,1);
+							}
+				   		});
+				   		feature.save(function(err, saved){
+				   			if(saved){
+							   module.exports.reorder(req,res)
+				   			}
+				   		});
+				   });
+		})
+
 	}
 };
 
