@@ -6,6 +6,7 @@ angular.module('lets-innovate',[ // Lets - innovate Modules
 	'innovate.admin',
 	'innovate.edit',
 	'innovate.user',
+	'innovate.features',
 	'ngRoute',
 	'ui'
 	])
@@ -28,6 +29,11 @@ angular.module('lets-innovate',[ // Lets - innovate Modules
 			cache : false,
 			templateUrl : 'js/templates/adminLogin.html',
 			controller: 'AdminController'
+		})
+		.when('/admin/all',{
+			cache : false,
+			templateUrl : 'js/templates/allFeatures.html',
+			controller : 'AllFeatureController'
 		})
 		.when('/admin/home',{
 			cache : false,
