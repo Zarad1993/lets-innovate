@@ -30,13 +30,6 @@ angular.module('innovate.home',[])
 			    })  
 	};
 
-
-	// Logout function
-	$scope.logout = function(){
-		Client.signout();
-	};
-
-
 	// Submit a new feature request 
 	$scope.sendRequest = function(){
 		// Display Notification
