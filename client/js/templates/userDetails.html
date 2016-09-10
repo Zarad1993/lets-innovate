@@ -1,5 +1,5 @@
 <div style="margin-left:50px;margin-right:50px;" ng-init="runUp()">
-  <h3><b><i>{{features[0].client}}'s Page<i><b></h3>
+  <h3 style="text-align:center"><b><i>{{features[0].client}}'s Dashboard<i><b></h3>
   <form>
     <input style="width:30%" class="form-control" ng-model="search" type="text" name="text" placeholder="Search">
     <br>
@@ -48,7 +48,7 @@
       </tr>
     </thead>
         <tbody id="sortable" ng-model="features">
-      <tr ng-repeat="feature in features| orderBy:sortType:sortReverse | filter:search" style="cursor:move;">
+      <tr id="selector" ng-repeat="feature in features| orderBy:sortType:sortReverse | filter:search" style="cursor:pointer;">
           <td>{{feature.clientPriority}}</td>
           <td style="width:15%">{{feature.title}}</td>
           <td style="width:50%">{{feature.description}}</td>
@@ -68,7 +68,10 @@
       </tr>
     </tbody>
   </table>
-  <button class="btn btn-primary" ng-click="goBack()">Submit new Request</button>
-  <span class="btn btn-primary" ng-click="logout()">Logout</span>
+  <button ng-show="flag" class="btn btn-primary" ng-click="goBack()">New Request</button>
+  <span ng-show="flag" class="btn btn-primary" ng-click="logout()">Logout</span>
+  <a ng-show="bet" class="btn btn-primary" href="#/admin/home">Back</a>
+  <div id='sound'></div>
 </div>
+<br>
  
