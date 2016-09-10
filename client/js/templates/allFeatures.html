@@ -1,0 +1,36 @@
+<div style="margin-left:50px;margin-right:50px;" ng-init="runUp()">
+  <h3 style="text-align:center"><b><i>All Features<i><b></h3>
+  <form>
+    <input style="width:30%" class="form-control" ng-model="search" type="text" name="text" placeholder="Search">
+    <br>
+  </form>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Client</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Target Date</th>
+        <th>URL</th>
+        <th>Area</th>
+      </tr>
+    </thead>
+        <tbody ng-model="features">
+      <tr ng-repeat="feature in features| orderBy:sortType:sortReverse | filter:search">
+          <td>{{$index + 1}}</td>
+          <td style="width:15%">{{feature.client}}</td>
+          <td style="width:15%">{{feature.title}}</td>
+          <td style="width:50%">{{feature.description}}</td>
+          <td style="width:10%">{{feature.targetDate}}</td>
+          <td>{{feature.ticketUrl}}</td>
+          <td>{{feature.area}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="btn btn-primary" ng-click="logout()">Logout</span>
+  <a class="btn btn-primary btn-success" href="#/admin/home">Clients</a>
+  <div id='sound'></div>
+</div>
+<br>
+ 
