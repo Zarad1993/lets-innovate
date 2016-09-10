@@ -35,7 +35,7 @@ angular.module('innovate.auth',[])
 				setTimeout(function(){
 					$window.localStorage.setItem('com.email',data.email);
 					$window.localStorage.setItem('com.client',true);
-					$location.path('/');
+					$location.path('/admin/home/'+data.email);
 					$scope.$apply();
 				},250);
 			  })
