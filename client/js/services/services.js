@@ -147,13 +147,28 @@ angular.module('innovate.services',[])
 		});
 	};
 
+	var updatePriorities = function(data){
+		return $http({
+			method : 'POST',
+			url : '/api/innov/reorder',
+			data : data
+		})
+		.then(function(response){
+			return response;
+		})
+		.catch(function(error){
+			return error;
+		})
+	};
+
 	return {
 		getFeatures : getFeatures,
 		addFeature : addFeature,
 		getByEmail : getByEmail,
 		deleteFeature : deleteFeature,
 		getOneFeature : getOneFeature,
-		editFeature : editFeature
+		editFeature : editFeature,
+		updatePriorities : updatePriorities
 
 	};
 })
