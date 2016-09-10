@@ -47,8 +47,8 @@
         <th ng-show="flag">Edit</th>
       </tr>
     </thead>
-        <tbody ui:sortable="sortableOptions" ng-model="features">
-      <tr ng-repeat="feature in features | orderBy:sortType:sortReverse |filter:search" style="cursor:move;">
+        <tbody id="sortable" ng-model="features">
+      <tr ng-repeat="feature in features| orderBy:sortType:sortReverse | filter:search" style="cursor:move;">
           <td>{{feature.clientPriority}}</td>
           <td style="width:15%">{{feature.title}}</td>
           <td style="width:50%">{{feature.description}}</td>
@@ -69,9 +69,5 @@
     </tbody>
   </table>
   <button class="btn btn-primary" ng-click="goBack()">Back</button>
-  <button class="btn btn-primary" ng-click="submitSort()">Update Sort</button>
 </div>
-
-<!-- <ul ui-sortable="sortableOptions" ng-model="testing">
-  <li ng-repeat="tes in testing">{{tes}}</li>
-</ul> -->
+ 
