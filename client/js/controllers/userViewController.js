@@ -13,6 +13,7 @@ angular.module('innovate.user',[])
 	$scope.sortType     = 'name'; // set the default sort type
 	$scope.sortReverse  = false;  // set the default sort order
 	$scope.flag = true; // Flag that displays the edit button
+	$scope.bet = false; // A condition that displays the go Back button for admin
 
 	// On calling the controller 
 	// runUp is our initialize function
@@ -41,7 +42,10 @@ angular.module('innovate.user',[])
 		// If the user is admin, then don't display edit button
 		if($window.localStorage.getItem('com.admin')){
 			$scope.flag = false;
+			$scope.bet = true;
 		}
+
+
 	};
 
 	// A delete function for the admin and client, upon ending the feature request
@@ -70,35 +74,59 @@ angular.module('innovate.user',[])
 	$scope.edit = function(number){
 		$location.path('/edit/'+$scope.email+'/'+number);
 	};
+	function spawnNotification(theBody,theIcon,theTitle) {
+		var options = {
+			body: theBody,
+			icon: theIcon
+		};
+	    var n = new Notification(theTitle,options);
+		setTimeout(n.close.bind(n), 3000);
+	}	
 
 	if(!$window.localStorage.getItem('com.admin')){
 		$("#sortable").sortable();
 		$("#sortable").on( "sortupdate", function( event, ui ) {
-			var split = event.target.outerText.split('\n');
-			var array = [];
+			var split = event.target.outerText.split('\n');			
+			var array = [];			
+			var updateArray = function(numbers,index){
+					array.push({
+						before : numbers ,
+						after : index+1
+					});
+			}
 			split.forEach(function(i,index){
-
-				array.push({
-					before : i[0] ,
-					after : index+1
-				});
+				if(split.length > 9){
+					updateArray(i[0]+i[1], index);
+				} else {
+					updateArray(i[0], index);
+				}
 			});
 			Features.updatePriorities({array : array, features : $scope.features})
 					.then(function(response){
 						if(response.status === 201){
+							$scope.playSound();
+							spawnNotification('Thank you for re-ordering your priorities','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','REORDER\nDear '+$scope.features[0].client);
 							$scope.runUp();
 						}
 					})
 		});
 	}
 
+	$scope.playSound = function(){   
+	    document.getElementById('sound').innerHTML='<audio autoplay="autoplay"><source src="sounds/filling-your-inbox.mp3" type="audio/mpeg" /></audio>';
+	};
 
 	// Logout function
 	$scope.logout = function(){
 		Client.signout();
 	};
 
-
+	$scope.$watch('features',function(model){
+		model.forEach(function(i,index){
+			i.clientPriority = index +1;
+			Features.editFeature(i);
+		})
+	})
 
 });
 
