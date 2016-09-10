@@ -15,7 +15,7 @@ module.exports = function(app){
 	app.post('/api/innov/delete', featureController.deleteFeature);
 	app.post('/api/innov/edit', featureController.getOneFeature);
 	app.post('/api/innov/edit/feature', featureController.editFeature);
-
+	app.post('/api/innov/reorder', featureController.reorder);
 
 	app.get('/api/innov/clients', clientController.getClients);
 	app.post('/api/innov/client', clientController.getOneClient);
