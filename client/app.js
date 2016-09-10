@@ -81,7 +81,7 @@ angular.module('lets-innovate',[ // Lets - innovate Modules
 			$location.path('/');
 		} else if($window.localStorage.getItem('com.admin') && next.$$route.originalPath === '/'){
 			window.alert('Sorry Admin, You cannot be here');
-			$location.path('/admin/home');
+			$location.path('/admin/all');
 		} 
 	});	
 });

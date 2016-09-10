@@ -8,7 +8,7 @@ angular.module('innovate.auth',[])
 	$scope.checkUser = function(){
 		if(Client.isAuth()){
 			window.alert('You Are Already Logged In');
-			$location.path('/');
+			$location.path('/admin/home/'+$window.localStorage.getItem('com.email'));
 		}
 	};
 
