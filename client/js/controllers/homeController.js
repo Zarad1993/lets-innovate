@@ -43,11 +43,15 @@ angular.module('innovate.home',[])
 		}
 
 		$scope.feature.clientPriority = $scope.numberOfFeatures + 1;
+		$scope.feature.client = $scope.client.name;
+		console.log($scope.feature.client);
+		console.log($scope.client.name);
 		Features.addFeature($scope.feature)
 				.then(function(response){
 					if(response.status === 201){
 						setTimeout(function(){
-							$window.location.reload();
+							$location.path('/admin/home/'+$window.localStorage.getItem('com.email'));
+							$scope.$apply();
 						},1000);
 						if (Notification.permission === 'granted') {
 						// If it's okay let's create a notification
