@@ -1,6 +1,6 @@
 'use strict';
 angular.module('innovate.user',[])
-.controller('UserViewController',function($scope, $window, Features, $location){
+.controller('UserViewController',function($scope, $window, Features, $location, Client){
 
 	// This controller displays all the feature requests
 	// that have already been submitted by the user-(Client)
@@ -91,6 +91,13 @@ angular.module('innovate.user',[])
 					})
 		});
 	}
+
+
+	// Logout function
+	$scope.logout = function(){
+		Client.signout();
+	};
+
 
 
 });
