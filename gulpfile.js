@@ -44,7 +44,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('project', function(){
-	gulp.src(['./client/js/controllers/editFeature.js','./client/js/controllers/userViewController.js','./client/js/controllers/adminController.js','./client/js/controllers/auth.js','./client/js/controllers/homeController.js','./client/js/services/services.js','./client/app.js'])
+	gulp.src(['./client/js/controllers/editFeature.js','./client/js/controllers/allFeaturesController.js','./client/js/controllers/userViewController.js','./client/js/controllers/adminController.js','./client/js/controllers/auth.js','./client/js/controllers/homeController.js','./client/js/services/services.js','./client/app.js'])
 		.pipe(concat('lets-innovate.js'))
 		.pipe(gulp.dest('./client/dist'))
 		.pipe(rename('lets-innovate.min.js'))
