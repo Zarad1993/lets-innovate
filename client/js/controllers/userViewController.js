@@ -71,20 +71,28 @@ angular.module('innovate.user',[])
 		$location.path('/edit/'+$scope.email+'/'+number);
 	};
 
-	$scope.testing = [1,2,3,4];
+	if(!$window.localStorage.getItem('com.admin')){
+		$("#sortable").sortable();
+		$("#sortable").on( "sortupdate", function( event, ui ) {
+			var split = event.target.outerText.split('\n');
+			var array = [];
+			split.forEach(function(i,index){
 
-	$scope.test = function(){
-		console.log('test');
-	};
-
-	$scope.sortableOptions = {
-		update: function(e, ui) {},
-		stop : function(e, ui){console.log($scope.test())}
-	};
-
-	$scope.submitSort = function(){
-		console.log($scope.features);
+				array.push({
+					before : i[0] ,
+					after : index+1
+				});
+			});
+			Features.updatePriorities({array : array, features : $scope.features})
+					.then(function(response){
+						if(response.status === 201){
+							$scope.runUp();
+						}
+					})
+		});
 	}
+
+
 });
 
 
