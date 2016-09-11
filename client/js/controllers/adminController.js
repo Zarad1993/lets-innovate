@@ -4,6 +4,7 @@ angular.module('innovate.admin',[])
 	$scope.user ={};  // user -- > admin
 	$scope.clients = []; // clients in application
 	$scope.numberOfRequests = 0; // Number of requests in total
+
 	// Sign in Function
 	$scope.login = function(){
 		Admin.signin($scope.user)
@@ -47,4 +48,5 @@ angular.module('innovate.admin',[])
 	$scope.logout = function(){
 		Client.signout();
 	};
+
 });
