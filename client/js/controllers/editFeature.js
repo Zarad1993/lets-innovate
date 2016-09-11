@@ -1,6 +1,6 @@
 'use strict';
 angular.module('innovate.edit',[])
-.controller('EditFeatureController', function($scope, $window, $location, Client, Features){
+.controller('EditFeatureController', function($scope, $window, $location, Client, Features, socket){
 
 	// This is the Edit Controller where only the User-(CLIENT) is allowed
 	// to edit (Update) his feature request
@@ -42,6 +42,7 @@ angular.module('innovate.edit',[])
 		Features.editFeature($scope.feature)
 				.then(function(response){
 					if(response.status === 201){
+						socket.emit('update priority',$scope.feature.client);
 						if (Notification.permission === 'granted') {
 							// If it's okay let's create a notification
 							spawnNotification('Your edit has been successfully submitted','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','Dear '+$scope.feature.client);
