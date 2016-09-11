@@ -8,6 +8,8 @@ An application designed to submit a new feature request, providing client CRUD i
 
 Check our website [CLICK](http://lets-innovate.herokuapp.com/#/) It's COOL!.
 
+![Subscribed](https://raw.githubusercontent.com/Zarad1993/lets-innovate/master/client/slider/lets-innovate.gif "Subscribed")
+
 <iframe src="//giphy.com/embed/SwuUTCR74WKis" width="480" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/SwuUTCR74WKis">via GIPHY</a></p>
 
 ## Table of Contents
