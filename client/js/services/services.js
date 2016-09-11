@@ -192,4 +192,9 @@ angular.module('innovate.services',[])
 	return {
 		signin : signin
 	};
-});
+})
+.factory('socket', function(){
+  var socket = io.connect('http://lets-innovate.herokuapp.com');
+  
+  return socket;
+})
