@@ -1,7 +1,7 @@
 'use strict';
 angular.module('innovate.home',[])
 
-.controller('HomeController', function($scope, Client, Features, $window, $location){	
+.controller('HomeController', function($scope, Client, Features, $window, $location, socket){	
 	$scope.feature = {};
 	// This is our Home Controller 
 	// Which is the heart of the application, where the user submits
@@ -49,6 +49,7 @@ angular.module('innovate.home',[])
 		Features.addFeature($scope.feature)
 				.then(function(response){
 					if(response.status === 201){
+						socket.emit('update priority',$scope.feature.client);
 						setTimeout(function(){
 							$location.path('/admin/home/'+$window.localStorage.getItem('com.email'));
 							$scope.$apply();
