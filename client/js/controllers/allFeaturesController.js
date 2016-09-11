@@ -17,8 +17,6 @@ angular.module('innovate.features',[])
 	    document.getElementById('sound').innerHTML='<audio autoplay="autoplay"><source src="sounds/filling-your-inbox.mp3" type="audio/mpeg" /></audio>';
 	};
 
-
-
 	socket.on('reload', function(data){
 		// Display Notification
 		function spawnNotification(theBody,theIcon,theTitle) {
