@@ -8,6 +8,7 @@ An application designed to submit a new feature request, providing client CRUD i
 
 Check our website [CLICK](http://lets-innovate.herokuapp.com/#/) It's COOL!.
 
+<iframe src="//giphy.com/embed/SwuUTCR74WKis" width="480" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/SwuUTCR74WKis">via GIPHY</a></p>
 
 ## Table of Contents
 1. [Tech Stack](#tech-stack)
