@@ -20,7 +20,6 @@ var io = require('socket.io', { rememberTransport: false, transports: ['WebSocke
 }));
 
 io.sockets.on('connection', function(socket){
-	console.log('Connected');
 	socket.on('update priority', function(data){
 		io.sockets.emit('reload', data);
 	})
