@@ -29,6 +29,7 @@ describe('Admin Unit Tests', function(){
 		done();
 	});
 
+
 	it('every amdin should have an email and password',function(done){
 		newAdmin.save(function(){
 			Admin.findOne({'email': 'mohammad.albakri93@gmail.com'})
