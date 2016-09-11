@@ -10,12 +10,20 @@ var app = express();
 
 var port = process.env.PORT || 8000;
 
-// start listening on port 8000
-var listener = app.listen(port , function(){
-	console.log('Listening on port ' + listener.address().port); // Listening port
-});
 
 require('./config/middleware.js')(app,express);
 require('./config/routes.js')(app,express);
+
+// start listening on port 8000
+var io = require('socket.io', { rememberTransport: false, transports: ['WebSocket', 'Flash Socket', 'AJAX long-polling'] }).listen(app.listen(port, function(){
+	console.log('Listening on port ' + port); // Listening port
+}));
+
+io.sockets.on('connection', function(socket){
+	console.log('Connected');
+	socket.on('update priority', function(data){
+		io.sockets.emit('reload', data);
+	})
+})
 
 module.exports = app;
