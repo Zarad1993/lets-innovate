@@ -1,6 +1,6 @@
 'use strict';
 angular.module('innovate.user',[])
-.controller('UserViewController',function($scope, $window, Features, $location, Client){
+.controller('UserViewController',function($scope, $window, Features, $location, Client, socket){
 
 	// This controller displays all the feature requests
 	// that have already been submitted by the user-(Client)
@@ -104,6 +104,7 @@ angular.module('innovate.user',[])
 			Features.updatePriorities({array : array, features : $scope.features})
 					.then(function(response){
 						if(response.status === 201){
+							socket.emit('update priority',$scope.features[0].client);
 							$scope.playSound();
 							spawnNotification('Thank you for re-ordering your priorities','http://payperhead.com/wp-content/uploads/2013/05/Features.jpg','REORDER\nDear '+$scope.features[0].client);
 							$scope.runUp();
