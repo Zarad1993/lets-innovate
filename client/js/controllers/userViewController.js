@@ -55,6 +55,7 @@ angular.module('innovate.user',[])
 			Features.deleteFeature({priority : priority , client : client})
 					.then(function(response){
 						if(response.status === 201){
+							socket.emit('update priority',$scope.features[0].client);
 							$window.location.reload();
 						}
 					});
