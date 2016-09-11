@@ -6,11 +6,34 @@ An application designed to submit a new feature request
 
 ## Production
 
-Check our website [here](http://lets-innovate.herokuapp.com/#/).
+Check our website [CLICK](http://lets-innovate.herokuapp.com/#/) It's COOL!.
 
 
 ## Table of Contents
+1. [Tech Stack](#tech-stack)
 1. [Development](#development)
+
+### Tech Stack
+
+1) Front-End
+- Angular
+- Bootstrap
+- jQuery   
+
+2) Back-End
+- Node/Express
+- MongoDB
+- Socket.io
+
+
+3) Testing
+- Mocha
+- Chai
+
+4) Deployment
+- Heroku
+
+
 
 ## Development
 
@@ -25,6 +48,14 @@ npm install && bower install
 ## Before running on localhost 
 ```sh
 sudo mongod
+```
+## Toggle Socket.IO on local
+```sh
+Open client/js/services/services.js
+	SWITCH from 
+	var socket = io.connect('http://lets-innovate.herokuapp.com');
+	TO
+	var socket = io.connect('http://localhost:8000/#/');
 ```
 ## Localhost
 ```sh
