@@ -2,7 +2,7 @@
 
 
 # lets-innovate
-An application designed to submit a new feature request, providing client CRUD interface, with sorting priorities by drag and drop. Also adding web socket for real time updates to help admin organize work.
+An application designed to submit a new feature request based on BriteCore's full stack Software Engineer career requirements, providing client CRUD interface, with sorting priorities by drag and drop. Also adding web socket for real time updates to help admin organize work.
 
 ## Production
 
